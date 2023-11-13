@@ -1,3 +1,7 @@
+.body{
+    background-image: url("../images/VintageTv.jpg");
+}
+
 .VideoContainer{
     width: fit-content;
     height: fit-content;
