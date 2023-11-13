@@ -1,5 +1,8 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const path = require("path");
+
+const config = require("./config.json");
 
 const app = express();
 
@@ -7,14 +10,22 @@ app.use(fileUpload({
     "limits": {"fileSize": 64 * 1024 * 1024}
 }));
 
-app.get("/", async (req, res) => {
+app.use("/", express.static("client"));
 
-    res.send("the server is on!");
+app.get("/upload", async (req, res) => {
+
+    res.sendFile(path.resolve("client/upload.html"));
 
 });
 
-app.post
+app.post("/upload", async (req, res) => {
 
-app.listen(80, () => {
-    console.log("Server running on port 80.");
+    let video = req.files["UploadedVideo"];
+
+    console.log(`file received! ${video.name} with size ${video.size} bytes`);
+
+});
+
+app.listen(config.port, () => {
+    console.log("Server running on port " + config.port);
 });
