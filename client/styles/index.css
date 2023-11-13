@@ -1,0 +1,10 @@
+.VideoContainer{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.VideoContainer video{
+    width: auto;
+    height: auto;
+}
