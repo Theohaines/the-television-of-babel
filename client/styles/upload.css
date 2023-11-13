@@ -1,0 +1,25 @@
+.PageContainer{
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin: auto;
+    top: 25%;
+}
+
+.FileUploadForm{
+    text-align-last: center;
+    background-color: #fff;
+    padding: 10px;
+    border: solid black 2px;
+}
+
+.FileUploadForm input{
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.FileUploadForm input[type="submit"]{
+    width: 90%;
+    height: 30px;
+}
