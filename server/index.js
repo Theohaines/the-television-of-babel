@@ -17,6 +17,7 @@ const fileParser = multer({
 });
 
 app.use("/", express.static("client"));
+app.use("/media", express.static("media"));
 
 app.get("/", async (req, res) => {
 
