@@ -1,6 +1,8 @@
 const express = require("express");
 const multer = require("multer");
+const fs = require("fs");
 const path = require("path");
+const uuid = require("uuid");
 
 const config = require("./config.json");
 
@@ -40,6 +42,13 @@ app.post("/upload", fileParser.single("UploadedVideo"), async (req, res) => {
     console.log(`file received! ${video.originalname} with size ${video.size} bytes`);
 
     res.redirect("/");
+
+});
+
+app.get("/getvideo", async (req, res) => {
+
+    let videos = fs.readdirSync("media");
+    res.send("/media/" + videos[Math.round(Math.random() * videos.length - 1)]);
 
 });
 
