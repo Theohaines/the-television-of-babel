@@ -9,3 +9,19 @@
 body{
     background-color: #c0c0c0;
 }
+
+.Header{
+    background-color: cadetblue;
+}
+
+.Header h1{
+    display: inline;
+}
+
+.Header a{
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+    text-align: right;
+    display: inline;
+}
