@@ -1,6 +1,9 @@
 const express = require("express");
+const { FtpServer } = require("ftp-srv");
 
 const app = express();
+
+const fileServer = new FtpServer();
 
 app.get("/", async (req, res) => {
 
