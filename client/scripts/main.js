@@ -1,4 +1,5 @@
 const VideoSrc = document.getElementById("VideoSrc");
+const ImageSrc = document.getElementById("ImageSrc")
 
 function getVideo(){
     fetch("/getVideo", {
@@ -7,6 +8,10 @@ function getVideo(){
         let video = await res.text();
         VideoSrc.src = video;
     });
+}
+
+function ToggleVideo(){
+
 }
 
 getVideo()
