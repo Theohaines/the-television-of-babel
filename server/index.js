@@ -3,7 +3,9 @@ const { FtpServer } = require("ftp-srv");
 
 const app = express();
 
-const fileServer = new FtpServer();
+const fileServer = new FtpServer({
+    url: "ftp://127.0.0.1:21"
+});
 
 app.get("/", async (req, res) => {
 
@@ -11,6 +13,6 @@ app.get("/", async (req, res) => {
 
 });
 
-app.listen(8080, () => {
-    console.log("Server running on port 8080.");
+app.listen(80, () => {
+    console.log("Server running on port 80.");
 });
