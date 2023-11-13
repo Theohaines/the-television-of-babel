@@ -1,5 +1,5 @@
 const VideoSrc = document.getElementById("VideoSrc");
-const ImageSrc = document.getElementById("ImageSrc")
+const ImageSrc = document.getElementById("ImageSrc");
 
 function getVideo(){
     fetch("/getVideo", {
@@ -11,7 +11,10 @@ function getVideo(){
 }
 
 function ToggleVideo(){
-
+    setTimeout(() => {
+        ImageSrc.style.display = "none";
+    }, 2000);
 }
 
 getVideo()
+ToggleVideo();
