@@ -1,10 +1,22 @@
+.body{
+    background-image: url("../images/VintageTv.jpg");
+}
+
 .VideoContainer{
     width: fit-content;
     height: fit-content;
     margin: auto;
+    margin-top: 15%;
 }
 
 .VideoContainer video{
     width: auto;
     height: auto;
+    border: black solid 3px;
+}
+
+.VideoContainer img{
+    width: auto;
+    height: auto;
+    border: black solid 3px;
 }
