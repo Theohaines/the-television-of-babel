@@ -9,11 +9,3 @@
 body{
     background-color: #c0c0c0;
 }
-
-.PageContainer{
-    width: 90%;
-    height: fit-content;
-    padding: 10px;
-    margin: auto;
-    top: 25%;
-}
