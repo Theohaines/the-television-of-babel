@@ -10,7 +10,7 @@ const app = express();
 const fileParser = multer({
     storage: multer.diskStorage({
         filename: (req, file, save) => {
-            save(null, file.originalname);
+            save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
         },
         destination: (req, file, save) => {
             save(null, path.resolve("media"));
@@ -37,9 +37,11 @@ app.post("/upload", fileParser.single("UploadedVideo"), async (req, res) => {
 
     let video = req.file;
 
-    console.log(video);
-
-    console.log(`file received! ${video.originalname} with size ${video.size} bytes`);
+    try {
+        console.log(`file received! ${video.originalname} with size ${video.size} bytes`);
+    } catch (err) {
+        console.log("no file found in request...");
+    }
 
     res.redirect("/");
 
