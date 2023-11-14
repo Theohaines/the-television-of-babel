@@ -1,17 +1,19 @@
+ /* Global style sheet is used for styles that are used across all pages but can be overridden by other CSS files */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
+    color: #e0e0e0;
 }
 
 body{
-    background-color: #c0c0c0;
+    background-color: #121212;
 }
 
 .Header{
-    background-color: cadetblue;
+    background-color: #2e3131;
 }
 
 .Header h1{
@@ -21,7 +23,7 @@ body{
 .Header a{
     margin-left: 5px;
     text-decoration: none;
-    color: black;
     text-align: right;
     display: inline;
+    vertical-align: middle;
 }
