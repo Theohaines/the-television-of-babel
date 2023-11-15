@@ -18,6 +18,7 @@ let inStatic = false;
 const splashText = document.getElementById("SplashText");
 const splashTexts = [
     "The tiktok aggregate!",
+    "4 > F12 > Developer console > :)",
     "4 > F12 > Developer console > :)"
 ]
 
@@ -53,8 +54,8 @@ async function toggleVideo() {
 }
 
 function splashTextUpdater(){
-    var randomSplash = (Math.random() * splashTexts.length);
-    splashText.text = splashTexts[randomSplash];
+    var randomSplash = Math.floor((Math.random() * splashTexts.length));
+    splashText.textContent = splashTexts[randomSplash].text;
 }
 
 addEventListener("keypress", event => {
@@ -80,5 +81,5 @@ let toggler = setInterval(() => {
     });
 }, 100);
 
-toggleVideo();
 splashTextUpdater();
+toggleVideo();
