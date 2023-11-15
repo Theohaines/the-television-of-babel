@@ -2,23 +2,78 @@
     width: fit-content;
     height: fit-content;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .VideoContainer video{
     width: 860px;
     height: 486px;
     border: black solid 3px;
+    display: block;
 }
 
 .VideoContainer img{
     width: 860px;
     height: 486px;
     border: black solid 3px;
+    display: block;
+}
+
+.VideoContainer button{
+    display: inline;
+    vertical-align: top;
+    float: right;
+    background-color: #2e3131;
+    width: 100px;
+}
+
+.VideoContainer h3{
+    display: inline;
+    vertical-align: top;
 }
 
 .SiteUsagePopup{
     width: 40%;
     height: fit-content;
     padding: 10px;
+}
+
+.ReportMenu{
+    width: 860px;
+    height: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.ReportMenu h3{
+    line-height: 0;
+    margin-bottom: 20px;
+}
+
+.ReportMenu input[type="text"]{
+    width: 90%;
+    height: 30px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #2e3131;
+    color: #fff;
+}
+
+.ReportMenu textarea{
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    background-color: #2e3131;
+    color: #fff;
+}
+
+.ReportMenu input[type="submit"]{
+    width: 90%;
+    height: 30px;
+    margin: auto;
+    background-color: #2e3131;
+    color: #fff;
 }

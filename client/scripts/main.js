@@ -31,8 +31,11 @@ const splashTexts = [
     "*may cause internal bleeding",
     "happy birthday ern",
     "where am i?",
-    "i hope ye like leather"
+    "i hope ye like leather",
+    "Are you sure you wanna refund this item?"
 ];
+
+const videoUUIDInput = document.getElementById("VideoUUIDInput");
 
 async function fetchVideo() {
     try {
@@ -76,6 +79,7 @@ function splashTextUpdater(){
 
 function grabVideoUUID(URL){
     videoUUIDText.textContent = URL.replace("/media/", "");
+    VideoUUIDInput.value = URL.replace("/media/", "");
 }
 
 addEventListener("keypress", event => {
