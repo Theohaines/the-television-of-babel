@@ -28,8 +28,13 @@ const splashTexts = [
     "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "Are you manually dragging and dropping the changes?",
     "console.log('REMOVE SKIN');",
-    "*may cause internal bleeding"
-]
+    "*may cause internal bleeding",
+    "happy birthday ern",
+    "where am i?",
+    "i hope ye like leather"
+];
+
+let inStatic = false;
 
 async function fetchVideo() {
     try {
@@ -103,3 +108,10 @@ staticAudio.volume = 0.1;
 video.volume = 0.1;
 splashTextUpdater();
 toggleVideo();
+
+let splashTick = 0;
+setInterval(() => {
+    let splashSize = 0 + (Math.sin(splashTick) * 0.25);
+    splashTick += 0.05;
+    splashText.style.transform = `rotate(${splashSize}deg)`;
+}, 10);
