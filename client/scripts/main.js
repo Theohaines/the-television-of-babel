@@ -72,6 +72,5 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
-StaticFX.volume = 0.5;
-getVideo();
-toggleVideo();
+StaticFX.volume = 0.2;
+GetNewVideo();
