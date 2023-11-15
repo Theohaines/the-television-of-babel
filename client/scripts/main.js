@@ -75,7 +75,7 @@ function splashTextUpdater(){
 }
 
 function grabVideoUUID(URL){
-    console.log(URL);
+    videoUUIDText.textContent = URL.replace("/media/", "");
 }
 
 addEventListener("keypress", event => {
