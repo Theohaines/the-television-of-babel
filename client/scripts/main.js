@@ -15,6 +15,7 @@ function toggleVideo(){
     VideoSrc.style.display = "none";
     ImageSrc.style.display = "block";
     setTimeout(() => {
+        getVideo();
         ImageSrc.style.display = "none";
         VideoSrc.style.display = "block";
     }, 2000);
@@ -43,7 +44,6 @@ function toggleElement(ID){ // Reusable way to toogle element visibility via ID 
 }
 
 function GetNewVideo(){
-    getVideo();
     toggleVideo();
 }
 
