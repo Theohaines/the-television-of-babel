@@ -13,9 +13,10 @@ const staticImage = document.querySelector("#ImageSrc");
  */
 const staticAudio = document.querySelector("#StaticFX");
 
-let inStatic = false;
-
-const splashText = document.getElementById("SplashText");
+/**
+ * @type {HTMLAudioElement}
+ */
+const splashText = document.querySelector("#SplashText");
 const splashTexts = [
     "The tiktok aggregate!",
     "4 > F12 > Developer console > :)",
@@ -26,8 +27,13 @@ const splashTexts = [
     "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "Are you manually dragging and dropping the changes?",
     "console.log('REMOVE SKIN');",
-    "*may cause internal bleeding"
-]
+    "*may cause internal bleeding",
+    "happy birthday ern",
+    "where am i?",
+    "i hope ye like leather"
+];
+
+let inStatic = false;
 
 async function fetchVideo() {
     try {
@@ -95,3 +101,10 @@ let toggler = setInterval(() => {
 staticAudio.volume = 0.2;
 splashTextUpdater();
 toggleVideo();
+
+let splashTick = 0;
+setInterval(() => {
+    let splashSize = 0 + (Math.sin(splashTick) * 0.25);
+    splashTick += 0.05;
+    splashText.style.transform = `rotate(${splashSize}deg)`;
+}, 10);
