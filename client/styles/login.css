@@ -1,0 +1,34 @@
+.LoginPanel{
+    width: 20%;
+    height: fit-content;
+    padding: 20px;
+    margin: auto;
+    top: 25%;
+}
+
+.LoginPanel form{
+    text-align-last: center;
+    background-color: #2e3131;
+    padding: 10px;
+    border: solid black 2px;
+}
+
+.LoginPanel h3{
+    margin-bottom: 10px;
+}
+
+.LoginPanel input[type="text"],[type="password"]{
+    width: 90%;
+    height: 30px;
+    background-color: #2e3131;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.LoginPanel input[type="submit"]{
+    width: 90%;
+    height: 30px;
+    background-color: #2e3131;
+    margin-bottom: 10px;
+}
