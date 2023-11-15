@@ -49,7 +49,7 @@ async function toggleVideo() {
 addEventListener("keypress", event => {
     console.log(event.key);
     if (event.key == "4") {
-        console.log(    "         .-\"\"\"\"\"\"-.\n" +
+        console.log("         .-\"\"\"\"\"\"-.\n" +
         "       .'          '.\n" +
         "      /   O      O   \\\n" +
         "     :                :\n" +
