@@ -8,7 +8,7 @@
 
 .FileUploadForm{
     text-align-last: center;
-    background-color: #fff;
+    background-color: #2e3131;
     padding: 10px;
     border: solid black 2px;
 }
@@ -22,4 +22,5 @@
 .FileUploadForm input[type="submit"]{
     width: 90%;
     height: 30px;
+    background-color: #2e3131;
 }
