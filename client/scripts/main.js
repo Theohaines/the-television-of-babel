@@ -93,6 +93,6 @@ let toggler = setInterval(() => {
 
 
 staticAudio.volume = 0.1;
-video.volume = 0.3;
+video.volume = 0.1;
 splashTextUpdater();
 toggleVideo();
