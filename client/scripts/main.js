@@ -50,6 +50,7 @@ function GetNewVideo(){
 document.addEventListener('keyup', function(event) {
     if (event.code === 'Space') {
       console.log('Spacebar pressed!');
+      GetNewVideo();
     }
 });
 
@@ -67,5 +68,5 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
-getVideo()
+getVideo();
 toggleVideo();
