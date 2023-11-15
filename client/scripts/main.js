@@ -81,3 +81,4 @@ let toggler = setInterval(() => {
 }, 100);
 
 toggleVideo();
+splashTextUpdater();
