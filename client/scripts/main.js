@@ -15,6 +15,12 @@ const staticAudio = document.querySelector("#StaticFX");
 
 let inStatic = false;
 
+const splashText = document.getElementById("SplashText");
+const splashTexts = [
+    "The tiktok aggregate!",
+    "4 > F12 > Developer console > :)"
+]
+
 async function fetchVideo() {
     try {
         let videoUrl = await fetch("/getvideo", {
@@ -44,6 +50,11 @@ async function toggleVideo() {
 
         clearInterval(toggler);
     }, 2000);
+}
+
+function splashTextUpdater(){
+    var randomSplash = (Math.random() * splashTexts.length);
+    splashText.text = splashTexts[randomSplash];
 }
 
 addEventListener("keypress", event => {

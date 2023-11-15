@@ -23,14 +23,19 @@ body{
 .Header a{
     margin-left: 5px;
     text-decoration: none;
-    display: inline;
+    display: inline-block;
     vertical-align: middle; 
+    text-align: right;
 }
 
 .Header p{
-    display: inline;
+    display: inline-block;
     vertical-align: middle;
     text-align: right;
+}
+
+.Header h5{
+    color: yellow;
 }
 
 .Footer {
