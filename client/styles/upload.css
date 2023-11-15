@@ -24,3 +24,7 @@
     height: 30px;
     background-color: #2e3131;
 }
+
+.FileUploadForm p{
+    margin-top: 5px;
+}
