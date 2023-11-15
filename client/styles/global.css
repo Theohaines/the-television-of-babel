@@ -29,12 +29,8 @@ body{
 
 .Header p{
     display: inline;
-    vertical-align: top;
-   
-}
-
-.Header img{
-    width: 32px;
+    vertical-align: middle;
+    text-align: right;
 }
 
 .Footer {
