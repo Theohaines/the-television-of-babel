@@ -73,7 +73,7 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
-StaticFX.addEventListener("load", () => {
+addEventListener("load", () => {
     StaticFX.volume = 0.2;
     StaticFX.play();
     GetNewVideo();
