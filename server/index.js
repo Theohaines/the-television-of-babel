@@ -13,6 +13,7 @@ const fileParser = multer({
             try {
                 save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
             } catch (err) {
+                console.log(err.toString());
                 save(new Error("Upload request sent with no attached video."));
             }
         },
