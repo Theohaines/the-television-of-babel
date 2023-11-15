@@ -6,14 +6,12 @@
 }
 
 .VideoContainer video{
-    width: 860px;
-    height: 486px;
+    width: 40%;
     border: black solid 3px;
 }
 
 .VideoContainer img{
-    width: 860px;
-    height: 486px;
+    width: 40%;
     border: black solid 3px;
 }
 
