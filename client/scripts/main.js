@@ -1,5 +1,6 @@
 const VideoSrc = document.getElementById("VideoSrc");
 const ImageSrc = document.getElementById("ImageSrc");
+const StaticFX = document.getElementById("StaticFX");
 let darkModeEnabled = false;
 
 function getVideo(){ //Shit I don't understand (If it breaks I will ask Wilson about it lol)
@@ -14,10 +15,13 @@ function getVideo(){ //Shit I don't understand (If it breaks I will ask Wilson a
 function toggleVideo(){
     VideoSrc.style.display = "none";
     ImageSrc.style.display = "block";
+    StaticFX.play();
     setTimeout(() => {
         getVideo();
         ImageSrc.style.display = "none";
         VideoSrc.style.display = "block";
+        StaticFX.pause();
+        StaticFX.currentTime = 0;
     }, 2000);
 }
 
