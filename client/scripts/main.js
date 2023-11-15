@@ -39,5 +39,25 @@ function toggleElement(ID){ // Reusable way to toogle element visibility via ID 
     }
 }
 
-getVideo()
+document.addEventListener('keyup', function(event) {
+    if (event.code === 'Space') {
+      console.log('Spacebar pressed!');
+    }
+});
+
+document.addEventListener('keyup', function(event) {
+    if (event.key === '4') {
+      console.log(    "         .-\"\"\"\"\"\"-.\n" +
+      "       .'          '.\n" +
+      "      /   O      O   \\\n" +
+      "     :                :\n" +
+      "     |                |\n" +
+      "     : ',          ,' :\n" +
+      "      \\  '-......-'  /\n" +
+      "       '.          .'\n" +
+      "         '-......-'\n");
+    }
+});
+
+//getVideo()
 toggleVideo();
