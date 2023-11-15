@@ -12,7 +12,7 @@ const fileParser = multer({
         filename: (req, file, save) => {
             try {
                 console.log(file);
-                save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
+                save(null, uuid.v4() + path.extname(file.originalname));
             } catch (err) {
                 console.log(err.toString());
                 save(new Error("Upload request sent with no attached video."));
