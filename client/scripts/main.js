@@ -34,8 +34,6 @@ const splashTexts = [
     "i hope ye like leather"
 ];
 
-let inStatic = false;
-
 async function fetchVideo() {
     try {
         let videoUrl = await fetch("/getvideo", {
