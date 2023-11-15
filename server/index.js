@@ -10,7 +10,11 @@ const app = express();
 const fileParser = multer({
     storage: multer.diskStorage({
         filename: (req, file, save) => {
-            save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
+            try {
+                save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
+            } catch (err) {
+                save(new Error("Upload request sent with no attached video."));
+            }
         },
         destination: (req, file, save) => {
             save(null, path.resolve("media"));
