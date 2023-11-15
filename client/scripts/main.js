@@ -12,8 +12,11 @@ function getVideo(){ //Shit I don't understand (If it breaks I will ask Wilson a
 }
 
 function toggleVideo(){
+    VideoSrc.style.display = "none";
+    ImageSrc.style.display = "block";
     setTimeout(() => {
         ImageSrc.style.display = "none";
+        VideoSrc.style.display = "block";
     }, 2000);
 }
 
@@ -39,6 +42,11 @@ function toggleElement(ID){ // Reusable way to toogle element visibility via ID 
     }
 }
 
+function GetNewVideo(){
+    getVideo();
+    toggleVideo();
+}
+
 document.addEventListener('keyup', function(event) {
     if (event.code === 'Space') {
       console.log('Spacebar pressed!');
@@ -59,5 +67,5 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
-//getVideo()
+getVideo()
 toggleVideo();
