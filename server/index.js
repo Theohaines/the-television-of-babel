@@ -61,7 +61,7 @@ app.get("/getvideo", async (req, res) => {
 
     let videos = fs.readdirSync("media").filter(videoFile => !videoFile.endsWith(".txt"));
 
-    res.send("/media/" + videos[Math.round(Math.random() * videos.length - 1)]);
+    res.send("/media/" + videos[Math.round(Math.random() * (videos.length - 1))]);
 
 });
 
