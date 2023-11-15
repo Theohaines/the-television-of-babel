@@ -1,80 +1,72 @@
-const VideoSrc = document.getElementById("VideoSrc");
-const ImageSrc = document.getElementById("ImageSrc");
-const StaticFX = document.getElementById("StaticFX");
-let darkModeEnabled = false;
+/**
+ * @type {HTMLVideoElement}
+ */
+const video = document.querySelector("#VideoSrc");
 
-function getVideo(){ //Shit I don't understand (If it breaks I will ask Wilson about it lol)
-    fetch("/getVideo", {
-        "method": "GET"
-    }).then(async res => {
-        let video = await res.text();
-        VideoSrc.src = video;
-    });
+/**
+ * @type {HTMLImageElement}
+ */
+const staticImage = document.querySelector("#ImageSrc");
+
+/**
+ * @type {HTMLAudioElement}
+ */
+const staticAudio = document.querySelector("#StaticFX");
+
+let inStatic = false;
+
+async function fetchVideo() {
+    try {
+        let videoUrl = await fetch("/getvideo", {
+            "method": "GET"
+        });
+        return await videoUrl.text();
+    } catch (err) {
+        return null;
+    }
 }
 
-function toggleVideo(){
-    VideoSrc.src = "";
-    VideoSrc.style.display = "none";
-    ImageSrc.style.display = "block";
-    StaticFX.play();
+async function toggleVideo() {
+    let videoUrl = await fetchVideo();
+    if (!videoUrl) return;
+
+    inStatic = true;
+    video.style.display = "none";
+    staticImage.style.display = "block";
+    staticAudio.play();
+
     setTimeout(() => {
-        getVideo();
-        ImageSrc.style.display = "none";
-        VideoSrc.style.display = "block";
-        StaticFX.pause();
-        StaticFX.currentTime = 0;
+        inStatic = false;
+        video.style.display = "block";
+        staticImage.style.display = "none";
+        staticAudio.pause();
+        staticAudio.currentTime = 0;
+
+        clearInterval(toggler);
     }, 2000);
 }
 
-// ***** SITE ALWAYS IN DARK MODE NOW ***** 
-
-/* function toggleDarkMode(){ // I HATE GOOD INTERFACE DESIGN 
-    if (darkModeEnabled == false){
-        // Change these elements to dark colours
-        darkModeEnabled = true;
-    } else {
-        // Change these elements to light colours 
-        darkModeEnabled = false;
-    }
-} */
-
-function toggleElement(ID){ // Reusable way to toogle element visibility via ID tag (only works on block elements)
-    var element = document.getElementById(ID);
-
-    if (element.style.display == "none"){
-        element.style.display == "block";
-    } else {
-        element.style.display == "none";
-    }
-}
-
-function GetNewVideo(){
-    toggleVideo();
-}
-
-document.addEventListener('keyup', function(event) {
-    if (event.code === 'Space') {
-      console.log('Spacebar pressed!');
-      GetNewVideo();
+addEventListener("keypress", event => {
+    console.log(event.key);
+    if (event.key == "4") {
+        console.log(    "         .-\"\"\"\"\"\"-.\n" +
+        "       .'          '.\n" +
+        "      /   O      O   \\\n" +
+        "     :                :\n" +
+        "     |                |\n" +
+        "     : ',          ,' :\n" +
+        "      \\  '-......-'  /\n" +
+        "       '.          .'\n" +
+        "         '-......-'\n");
+    } else if (event.key == " " && !inStatic) {
+        toggleVideo();
     }
 });
 
-document.addEventListener('keyup', function(event) {
-    if (event.key === '4') {
-      console.log(    "         .-\"\"\"\"\"\"-.\n" +
-      "       .'          '.\n" +
-      "      /   O      O   \\\n" +
-      "     :                :\n" +
-      "     |                |\n" +
-      "     : ',          ,' :\n" +
-      "      \\  '-......-'  /\n" +
-      "       '.          .'\n" +
-      "         '-......-'\n");
-    }
-});
+let toggler = setInterval(() => {
+    staticAudio.play().then(() => {
+        clearInterval(toggler);
+    });
+}, 100);
 
-addEventListener("load", () => {
-    StaticFX.volume = 0.2;
-    StaticFX.play();
-    GetNewVideo();
-});
+toggleVideo();
