@@ -11,6 +11,7 @@ const fileParser = multer({
     storage: multer.diskStorage({
         filename: (req, file, save) => {
             try {
+                console.log(file);
                 save(null, uuid.v4() + "." + file.originalname.split(".").at(-1));
             } catch (err) {
                 console.log(err.toString());
