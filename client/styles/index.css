@@ -7,7 +7,6 @@
 
 .VideoContainer video{
     width: auto;
-    height: auto;
     border: black solid 3px;
     height: 40%;
 }

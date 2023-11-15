@@ -13,6 +13,7 @@ function getVideo(){ //Shit I don't understand (If it breaks I will ask Wilson a
 }
 
 function toggleVideo(){
+    VideoSrc.src = "";
     VideoSrc.style.display = "none";
     ImageSrc.style.display = "block";
     StaticFX.play();
