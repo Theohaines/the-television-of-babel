@@ -15,7 +15,17 @@ const fileParser = multer({
         destination: (req, file, save) => {
             save(null, path.resolve("media"));
         }
-    })
+    }),
+    limits: {
+        fileSize: 64 * 1024 * 1024
+    },
+    fileFilter: (req, file, save) => {
+        let ext = path.extname(file.originalname);
+        if (!["mp4","avi","mov","asf","wmv"].includes(ext)) {
+            return save(new Error("Only videos are allowed."));
+        }
+        save(null, true);
+    }
 });
 
 app.use("/", express.static("client"));
