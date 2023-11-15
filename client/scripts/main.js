@@ -34,7 +34,7 @@ async function fetchVideo() {
         let videoUrl = await fetch("/getvideo", {
             "method": "GET"
         });
-        console.log("GOT VIDEO");
+
         return await videoUrl.text();
     } catch (err) {
         return null;
@@ -47,6 +47,7 @@ async function toggleVideo() {
 
     inStatic = true;
     video.style.display = "none";
+    video.src = ""
     staticImage.style.display = "block";
     staticAudio.play();
 
@@ -56,6 +57,7 @@ async function toggleVideo() {
         staticImage.style.display = "none";
         staticAudio.pause();
         staticAudio.currentTime = 0;
+        video.src = videoUrl
 
         clearInterval(toggler);
     }, 2000);
