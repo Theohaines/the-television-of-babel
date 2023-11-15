@@ -34,6 +34,7 @@ async function fetchVideo() {
         let videoUrl = await fetch("/getvideo", {
             "method": "GET"
         });
+        console.log("GOT VIDEO");
         return await videoUrl.text();
     } catch (err) {
         return null;
