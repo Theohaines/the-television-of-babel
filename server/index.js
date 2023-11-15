@@ -20,7 +20,7 @@ const fileParser = multer({
         fileSize: 64 * 1024 * 1024
     },
     fileFilter: (req, file, save) => {
-        let ext = path.extname(file.originalname);
+        let ext = path.extname(file.originalname).slice(1);
         if (!["mp4","avi","mov","asf","wmv"].includes(ext)) {
             return save(new Error("Only videos are allowed."));
         }
