@@ -105,7 +105,7 @@ toggleVideo();
 
 let splashTick = 0;
 setInterval(() => {
-    let splashSize = 0 + (Math.sin(splashTick) * 0.25);
+    let splashSize = Math.sin(splashTick) * 0.25;
     splashTick += 0.05;
     splashText.style.transform = `rotate(${splashSize}deg)`;
 }, 10);
