@@ -6,9 +6,9 @@
 }
 
 .VideoContainer video{
-    width: auto;
+    width: 860px;
+    height: 486px;
     border: black solid 3px;
-    height: 40%;
 }
 
 .VideoContainer img{
