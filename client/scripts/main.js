@@ -19,7 +19,14 @@ const splashText = document.getElementById("SplashText");
 const splashTexts = [
     "The tiktok aggregate!",
     "4 > F12 > Developer console > :)",
-    "4 > F12 > Developer console > :)"
+    "SKIN! SKIN! SKIN!",
+    "Poo + 2",
+    "One of the websites of all time!",
+    "100% stolen content",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "Are you manually dragging and dropping the changes?",
+    "console.log('REMOVE SKIN');",
+    "*may cause internal bleeding"
 ]
 
 async function fetchVideo() {
@@ -55,7 +62,7 @@ async function toggleVideo() {
 
 function splashTextUpdater(){
     var randomSplash = Math.floor((Math.random() * splashTexts.length));
-    splashText.textContent = splashTexts[randomSplash].text;
+    splashText.textContent = splashTexts[randomSplash];
 }
 
 addEventListener("keypress", event => {

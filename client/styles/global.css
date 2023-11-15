@@ -1,6 +1,11 @@
  /* Global style sheet is used for styles that are used across all pages but can be overridden by other CSS files */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
+@font-face {
+    font-family: Minceraft;
+    src: url(../images/MinecraftRegular-Bmg3.otf);
+  }
+
 *{
     margin: 0;
     padding: 0;
@@ -34,9 +39,10 @@ body{
     text-align: right;
 }
 
-.Header h5{
+.Header h3{
     color: yellow;
     margin-left: 5px;
+    font-family: "Minceraft";
 }
 
 .Footer {
