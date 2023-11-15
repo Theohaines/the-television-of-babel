@@ -13,6 +13,8 @@ const staticImage = document.querySelector("#ImageSrc");
  */
 const staticAudio = document.querySelector("#StaticFX");
 
+const videoUUIDText = document.getElementById("UUIDText");
+
 let inStatic = false;
 
 const splashText = document.getElementById("SplashText");
@@ -58,6 +60,7 @@ async function toggleVideo() {
         staticAudio.pause();
         staticAudio.currentTime = 0;
         video.src = videoUrl
+        grabVideoUUID(videoUrl)
 
         clearInterval(toggler);
     }, 2000);
@@ -66,6 +69,10 @@ async function toggleVideo() {
 function splashTextUpdater(){
     var randomSplash = Math.floor((Math.random() * splashTexts.length));
     splashText.textContent = splashTexts[randomSplash];
+}
+
+function grabVideoUUID(URL){
+    console.log(URL);
 }
 
 addEventListener("keypress", event => {
