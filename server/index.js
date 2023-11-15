@@ -59,7 +59,8 @@ app.post("/upload", fileParser.single("UploadedVideo"), async (req, res) => {
 
 app.get("/getvideo", async (req, res) => {
 
-    let videos = fs.readdirSync("media");
+    let videos = fs.readdirSync("media").filter(videoFile => !videoFile.endsWith(".txt"));
+
     res.send("/media/" + videos[Math.round(Math.random() * videos.length - 1)]);
 
 });
