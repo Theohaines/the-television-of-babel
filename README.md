@@ -1,4 +1,4 @@
-# the-Television-of-Babel
+# the-Television-of-Babel 📺
 <p align="center">
   <img src="https://i.ibb.co/SXD0Xsx/towerofbabellogo.png" alt="Television of Babel Logo" />
 </p>
@@ -22,3 +22,20 @@ Whilst the Television of Babel works by allowing users to upload content, where 
 
 You can find the Library of Babel website here:
 [Library of Babel](https://libraryofbabel.info/ "Libary of Babel link")
+
+# How to Use 📖
+*A step by step tutorial on how to use the website in its two primary functions.*
+
+## Watching content 📽️
+1. Navigate your way to: [Television of Babel Home](https://theohaines.xyz/)
+2. A video will automatically load, for the first video please press the 'play' button in the bottom left corner of the video to play it.
+3. Once you've watched it all, or had enough, press the **space bar** to load a new video.
+4. The video will load and beginning playing automatically.
+5. Repeat steps 3-4!
+
+## Uploading content 📷
+1. Navigate your way to: [Television of Babel Home](https://theohaines.xyz/)
+2. In the top left of the webpage, in the Navigation Bar, to the right of 'BabelTV' you will find the 'Upload' link, click on it and it will redirect you to [Television of Babel Upload](https://theohaines.xyz/upload)
+3. When it has loaded, click on 'Choose file', and upload any file that follows the accepted format, and that's below the max upload size of 64mb
+4. Click the 'Upload' button found beneath the choose file, and above the accepted formats and max upload size
+5. Congrats, your content has now been successfully uploaded, as long as it fits the formats and upload size!
