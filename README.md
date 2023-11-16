@@ -1,4 +1,4 @@
-# the-Television-of-Babel 📺
+# The-Television-of-Babel 📺
 <p align="center">
   <img src="https://i.ibb.co/SXD0Xsx/towerofbabellogo.png" alt="Television of Babel Logo" />
 </p>
@@ -27,6 +27,9 @@ Whilst the Television of Babel works by allowing users to upload content, where 
 You can find the Library of Babel website here:
 [Library of Babel](https://libraryofbabel.info/ "Libary of Babel link")
 
+<p align="center">
+  <img src="https://i.ibb.co/zJCdGbf/bannerblock.jpg" alt="Television of Babel Logo" width="100%" height="100px"/>
+</p>
 
 # How to Use 📖
 *A step by step tutorial on how to use the website in its two primary functions.*
