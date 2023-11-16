@@ -33,7 +33,8 @@ const splashTexts = [
     "where am i?",
     "i hope ye like leather",
     "Are you sure you wanna refund this item?",
-    "You will die!"
+    "You will die!",
+    "STOP POSTING FEET!"
 ];
 
 const videoUUIDInput = document.getElementById("VideoUUIDInput");
