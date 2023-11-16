@@ -1,18 +1,17 @@
 .ReportsQueue{
-    display: inline-block;
-    margin: auto;
-    margin-top: 5%;
-    margin-left: 5%;
     background-color: #2e3131;
     width: 40%;
     height: fit-content;
     padding: 10px;
+    margin: auto;
+    margin-top: 10px;
 }
 
 .Report{
     background-color: #5b5f5f;
     border: black solid 2px;
     padding: 5px;
+    margin-bottom: 5px;
 }
 
 .Report button{
@@ -21,4 +20,30 @@
     height: 50%;
     display: inline;
     margin: auto;
+}
+
+.ReportingContainer{
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    gap: 25px;
+    margin-top: 5px;
+}
+
+.VideoContainer{
+    width: fit-content;
+    height: fit-content;
+}
+
+.VideoContainer video{
+    width: 860px;
+    height: 486px;
+    border: black solid 3px;
+}
+
+.ReportReasonContainer textarea{
+    width: 860px;
+    height: 486px;
+    background-color: #2e3131;
+    color: #fff;
 }
