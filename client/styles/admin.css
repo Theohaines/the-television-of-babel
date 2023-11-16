@@ -1,0 +1,24 @@
+.ReportsQueue{
+    display: inline-block;
+    margin: auto;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: #2e3131;
+    width: 40%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.Report{
+    background-color: #5b5f5f;
+    border: black solid 2px;
+    padding: 5px;
+}
+
+.Report button{
+    background-color: #5b5f5f;
+    width: 49%;
+    height: 50%;
+    display: inline;
+    margin: auto;
+}
