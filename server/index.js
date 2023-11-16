@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const uuid = require("uuid");
 const sqlite = require("sqlite3");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 const config = require("./config.json");
 
@@ -38,6 +40,13 @@ const fileParser = multer({
 app.use("/", express.static("client"));
 app.use("/media", express.static("media"));
 app.use(express.urlencoded());
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+    let { auth = "" } = req.cookies;
+    req.auth = auth == process.env.AUTH;
+    next();
+});
 
 app.get("/", async (req, res) => {
 
@@ -91,6 +100,36 @@ app.post("/report", async (req, res) => {
     database.prepare("INSERT INTO reports (uuid, reason) VALUES (?, ?)").run(videoId, reportReason);
 
     res.send("Thank you for your report. It will be reviewed soon.");
+
+});
+
+app.get("/login", async (req, res) => {
+
+    res.sendFile(path.resolve("client/login.html"));
+
+});
+
+app.get("/admin", async (req, res) => {
+
+    if (req.auth) {
+        res.sendFile(path.resolve("client/admin.html"));
+    } else {
+        res.redirect("/");
+    }
+
+});
+
+app.get("/reports", async (req, res) => {
+
+    if (req.auth) {
+        database.prepare("SELECT * FROM reports").all((err, rows) => {
+            if (err) return console.log(err);
+
+            res.json(rows);
+        });
+    } else {
+        res.sendStatus(400);
+    }
 
 });
 
