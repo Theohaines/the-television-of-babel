@@ -7,8 +7,6 @@ const sqlite = require("sqlite3");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-const config = require("./config.json");
-
 const database = new sqlite.Database("server/db.sqlite");
 
 const app = express();
@@ -43,8 +41,8 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-    let { auth = "" } = req.cookies;
-    req.auth = auth == process.env.AUTH;
+    let { babeltv_auth = "" } = req.cookies;
+    req.auth = babeltv_auth == process.env.AUTH;
     next();
 });
 
@@ -133,6 +131,6 @@ app.get("/reports", async (req, res) => {
 
 });
 
-app.listen(config.port, () => {
-    console.log("Server running on port " + config.port);
+app.listen(process.env.PORT, () => {
+    console.log("Server running on port " + process.env.PORT);
 });
