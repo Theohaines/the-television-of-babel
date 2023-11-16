@@ -32,7 +32,8 @@ const splashTexts = [
     "happy birthday ern",
     "where am i?",
     "i hope ye like leather",
-    "Are you sure you wanna refund this item?"
+    "Are you sure you wanna refund this item?",
+    "You will die!"
 ];
 
 const videoUUIDInput = document.getElementById("VideoUUIDInput");
@@ -83,7 +84,6 @@ function grabVideoUUID(URL){
 }
 
 addEventListener("keypress", event => {
-    console.log(event.key);
     if (event.key == "4") {
         console.log("         .-\"\"\"\"\"\"-.\n" +
         "       .'          '.\n" +
@@ -94,7 +94,7 @@ addEventListener("keypress", event => {
         "      \\  '-......-'  /\n" +
         "       '.          .'\n" +
         "         '-......-'\n");
-    } else if (event.key == " " && !inStatic) {
+    } else if (event.key == " " && !inStatic && document.activeElement.id != "ReportReason") {
         toggleVideo();
     }
 });

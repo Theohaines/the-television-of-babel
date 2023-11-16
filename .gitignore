@@ -6,3 +6,5 @@ media/*.avi
 media/*.mov
 media/*.asf
 media/*.wmv
+
+server/*.sqlite

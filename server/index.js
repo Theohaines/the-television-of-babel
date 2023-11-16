@@ -3,8 +3,11 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const uuid = require("uuid");
+const sqlite = require("sqlite3");
 
 const config = require("./config.json");
+
+const database = new sqlite.Database("server/db.sqlite");
 
 const app = express();
 const fileParser = multer({
@@ -34,6 +37,7 @@ const fileParser = multer({
 
 app.use("/", express.static("client"));
 app.use("/media", express.static("media"));
+app.use(express.urlencoded());
 
 app.get("/", async (req, res) => {
 
@@ -66,6 +70,27 @@ app.get("/getvideo", async (req, res) => {
     let videos = fs.readdirSync("media").filter(videoFile => !videoFile.endsWith(".txt"));
 
     res.send("/media/" + videos[Math.round(Math.random() * (videos.length - 1))]);
+
+});
+
+app.get("/getvideocount", async (req, res) => {
+
+    res.send(fs.readdirSync("media").length);
+
+});
+
+app.post("/report", async (req, res) => {
+
+    try {
+        var videoId = req.body["VideoUUID"];
+        var reportReason = req.body["ReportReason"];
+    } catch (err) {
+        return res.sendStatus(400);
+    }
+
+    database.prepare("INSERT INTO reports (uuid, reason) VALUES (?, ?)").run(videoId, reportReason);
+
+    res.send("Thank you for your report. It will be reviewed soon.");
 
 });
 
