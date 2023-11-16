@@ -1,5 +1,7 @@
 # the-Television-of-Babel
-![Logo](https://i.ibb.co/SXD0Xsx/towerofbabellogo.png "Television of Babel Logo")
+<p align="center">
+  <img src="https://i.ibb.co/SXD0Xsx/towerofbabellogo.png" alt="Television of Babel Logo" />
+</p>
 
 ## Purpose
 The Television of Babel is simple to understand!
