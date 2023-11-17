@@ -26,7 +26,7 @@ async function fetchLatestReports() {
         reportCard.setAttribute("data-timestamp", report.timestamp);
 
         reportCard.innerHTML += "<h4>" + report.uuid + "</h4>";
-        reportCard.innerHTML += "<h5>" + report.timestamp + "</h5>";
+        reportCard.innerHTML += "<h5>" + new Date(report.timestamp).toUTCString() + "</h5>";
 
         let removeVideoButton = document.createElement("button");
         removeVideoButton.innerHTML = "Remove video";
