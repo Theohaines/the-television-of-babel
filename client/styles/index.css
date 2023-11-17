@@ -1,6 +1,6 @@
 .VideoContainer{
-    width: fit-content;
-    height: fit-content;
+    width: max-content;
+    height: max-content;
     margin: auto;
     margin-top: 5%;
 }
@@ -76,4 +76,26 @@
     margin: auto;
     background-color: #2e3131;
     color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+    .VideoContainer{
+        width: 100vw;
+        height: 20vw;
+    }
+
+    .VideoContainer video{
+        width: 98vw;
+        height: auto;
+    }
+
+    .VideoContainer img{
+        width: 98vw;
+        height: auto;
+    }
+
+    .ReportMenu{
+        width: 98vw;
+        margin-top: 40%;
+    }
 }
