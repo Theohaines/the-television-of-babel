@@ -10,6 +10,7 @@ async function fetchLatestReports() {
         });
         var reports = await reportsResponse.json();
     } catch (err) {
+        console.log(err.toString());
         return [];
     }
 
