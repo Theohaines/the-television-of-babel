@@ -95,7 +95,7 @@ app.post("/report", async (req, res) => {
         return res.sendStatus(400);
     }
 
-    database.prepare("INSERT INTO reports (uuid, reason) VALUES (?, ?)").run(videoId, reportReason);
+    database.prepare("INSERT INTO reports (uuid, reason, timestamp) VALUES (?, ?, ?)").run(videoId, reportReason, Date.now());
 
     res.send("Thank you for your report. It will be reviewed soon.");
 
@@ -120,7 +120,7 @@ app.get("/admin", async (req, res) => {
 app.get("/reports", async (req, res) => {
 
     if (req.auth) {
-        database.prepare("SELECT * FROM reports").all((err, rows) => {
+        database.prepare("SELECT * FROM reports LIMIT 10").all((err, rows) => {
             if (err) return console.log(err);
 
             res.json(rows);

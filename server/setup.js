@@ -4,7 +4,7 @@ const database = new sqlite.Database("server/db.sqlite");
 
 function setupDatabase() {
 
-    database.prepare("CREATE TABLE reports (uuid TEXT, reason TEXT)").run();
+    database.prepare("CREATE TABLE reports (uuid TEXT, reason TEXT, timestamp INT)").run();
     
     console.log("Database tables generated...");
 
