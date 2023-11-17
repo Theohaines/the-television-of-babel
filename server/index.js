@@ -3,11 +3,8 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const uuid = require("uuid");
-const sqlite = require("sqlite3");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-
-const database = new sqlite.Database("server/db.sqlite");
 
 const app = express();
 const fileParser = multer({
@@ -37,6 +34,7 @@ const fileParser = multer({
 
 app.use("/", express.static("client"));
 app.use("/media", express.static("media"));
+
 app.use(express.urlencoded());
 app.use(cookieParser());
 
@@ -45,6 +43,7 @@ app.use((req, res, next) => {
     req.auth = babeltv_auth == process.env.AUTH;
     next();
 });
+app.use("/report", require("./reports"));
 
 app.get("/", async (req, res) => {
 
@@ -86,21 +85,6 @@ app.get("/getvideocount", async (req, res) => {
 
 });
 
-app.post("/report", async (req, res) => {
-
-    try {
-        var videoId = req.body["VideoUUID"];
-        var reportReason = req.body["ReportReason"];
-    } catch (err) {
-        return res.sendStatus(400);
-    }
-
-    database.prepare("INSERT INTO reports (uuid, reason, timestamp) VALUES (?, ?, ?)").run(videoId, reportReason, Date.now());
-
-    res.send("Thank you for your report. It will be reviewed soon.");
-
-});
-
 app.get("/login", async (req, res) => {
 
     res.sendFile(path.resolve("client/login.html"));
@@ -113,20 +97,6 @@ app.get("/admin", async (req, res) => {
         res.sendFile(path.resolve("client/admin.html"));
     } else {
         res.redirect("/");
-    }
-
-});
-
-app.get("/reports", async (req, res) => {
-
-    if (req.auth) {
-        database.prepare("SELECT * FROM reports LIMIT 10").all((err, rows) => {
-            if (err) return console.log(err);
-
-            res.json(rows);
-        });
-    } else {
-        res.sendStatus(400);
     }
 
 });

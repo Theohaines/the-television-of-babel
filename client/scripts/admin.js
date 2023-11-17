@@ -4,8 +4,10 @@ const reportReasonTextarea = document.querySelector("#ReportReasonTextarea");
 
 async function fetchLatestReports() {
 
+    reportedVideoPlayer.src = "";
+
     try {
-        let reportsResponse = await fetch("/reports", {
+        let reportsResponse = await fetch("/report/get", {
             "method": "GET"
         });
         var reports = await reportsResponse.json();
@@ -13,16 +15,29 @@ async function fetchLatestReports() {
         return [];
     }
 
+    reportsQueue.innerHTML = "";
+
     for (let report of reports) {
 
         let reportCard = document.createElement("div");
         reportCard.className = "Report";
         reportCard.setAttribute("data-uuid", report.uuid);
         reportCard.setAttribute("data-reason", report.reason);
+        reportCard.setAttribute("data-timestamp", report.timestamp);
 
         reportCard.innerHTML += "<h4>" + report.uuid + "</h4>";
         reportCard.innerHTML += "<h5>" + report.timestamp + "</h5>";
-        reportCard.innerHTML += "<button>Remove video</button><button>Keep video</button>";
+
+        let removeVideoButton = document.createElement("button");
+        removeVideoButton.innerHTML = "Remove video";
+        removeVideoButton.addEventListener("click", () => acceptReport(reportCard));
+
+        let keepVideoButton = document.createElement("button");
+        keepVideoButton.innerHTML = "Keep video";
+        keepVideoButton.addEventListener("click", () => rejectReport(reportCard));
+
+        reportCard.appendChild(removeVideoButton);
+        reportCard.appendChild(keepVideoButton);
 
         reportCard.addEventListener("click", () => selectReport(reportCard));
 
@@ -39,6 +54,40 @@ function selectReport(reportCard) {
 
     reportedVideoPlayer.src = "/media/" + uuid;
     reportReasonTextarea.value = reason;
+
+}
+
+function acceptReport(reportCard) {
+
+    let uuid = reportCard.getAttribute("data-uuid");
+    let timestamp = reportCard.getAttribute("data-timestamp");
+
+    fetch("/report/accept", {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "body": `uuid=${uuid}&timestamp=${timestamp}`
+    });
+
+    fetchLatestReports();
+
+}
+
+function rejectReport(reportCard) {
+
+    let uuid = reportCard.getAttribute("data-uuid");
+    let timestamp = reportCard.getAttribute("data-timestamp");
+
+    fetch("/report/reject", {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "body": `uuid=${uuid}&timestamp=${timestamp}`
+    });
+
+    fetchLatestReports();
 
 }
 
