@@ -10,7 +10,6 @@ async function fetchLatestReports() {
         });
         var reports = await reportsResponse.json();
     } catch (err) {
-        console.log(err.toString());
         return [];
     }
 
@@ -38,7 +37,7 @@ function selectReport(reportCard) {
     let uuid = reportCard.getAttribute("data-uuid");
     let reason = reportCard.getAttribute("data-reason");
 
-    reportedVideoPlayer.src = "/media/" + uuid + ".mp4";
+    reportedVideoPlayer.src = "/media/" + uuid;
     reportReasonTextarea.value = reason;
 
 }
