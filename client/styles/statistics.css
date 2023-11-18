@@ -1,0 +1,16 @@
+.TotalVideosCTA{
+    width: 90%;
+    height: 15%;
+    margin: auto;
+    margin-top: 10px;
+    border: black solid 2px;
+    background-color: #2e3131;
+}
+
+.TotalVideosCTA h1{
+    text-align: center;
+}
+
+.TotalVideosCTA h2{
+    text-align: center;
+}
