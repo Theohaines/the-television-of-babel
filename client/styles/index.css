@@ -1,6 +1,4 @@
 .VideoContainer{
-    width: max-content;
-    height: max-content;
     margin: auto;
     margin-top: 5%;
 }
@@ -39,10 +37,7 @@
 }
 
 .ReportMenu{
-    width: 860px;
-    height: fit-content;
     margin: auto;
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -70,7 +65,7 @@
     color: #fff;
 }
 
-.ReportMenu input[type="submit"]{
+.ReportMenu input[type="submit"],[type="button"]{
     width: 90%;
     height: 30px;
     margin: auto;
@@ -81,7 +76,6 @@
 @media only screen and (max-width: 600px) {
     .VideoContainer{
         width: 100vw;
-        height: 20vw;
     }
 
     .VideoContainer video{
@@ -94,9 +88,14 @@
         height: auto;
     }
 
+    .VideoContainer button{
+        width: 100%;
+        height: auto;
+    }
+
     .ReportMenu{
         width: 98vw;
-        margin-top: 40%;
+        margin-top: 15px;
     }
 }
 

@@ -14,7 +14,7 @@
         <h3 id="SplashText">Splash goes here</h3>
     </div>
 
-    <div class="VideoContainer">
+    <div class="VideoContainer" id="VideoContainer">
         <h3 id="UUIDText" title="Click to copy permalink">Loading...</h3>
         <button onclick="toggleReportMenu()">Report</button>
         <img src="images/static.gif" alt="static" id="ImageSrc">
@@ -26,13 +26,20 @@
             <h3>Report video</h3>
             <input type="text" name="VideoUUID" id="VideoUUIDInput" placeholder="UUID here" readonly>
             <textarea name="ReportReason" id="ReportReason" cols="30" rows="10" placeholder="Report reason" required></textarea>
+            <input type="button" onclick="toggleReportMenu()" value="Close report menu">
             <input type="submit" value="Submit report">
         </form>
     </div>
 
-    <div class="Footer">
+    <button id="btn_reqPermission" style="display: none;padding: 2em">
+        Hey! This will be much better with sensors. Allow?
+    </button>
+    <div id="output_message"></div>
+
+    <div class="Footer" id="Footer">
         <img src="images/spacebar.svg" alt="">
-        <h5>Press space to load a new video</h5>
+        <h5>Press space to load a new video or shake phone</h5>
+        <a onclick="hideElement('Footer')">X</a>
     </div>
 
     <audio id="StaticFX" src="images/staticmp3.wav" hidden></audio>

@@ -68,3 +68,9 @@ body{
     text-align: center;
     vertical-align: middle;
 }
+
+.Footer a{
+    text-align: right;
+    float: right;
+    font-size: x-large;
+}
