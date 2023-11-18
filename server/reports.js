@@ -49,7 +49,7 @@ router.post("/accept", async (req, res) => {
 
     if (req.auth) {
         fs.rmSync("media/" + videoId);
-        clearReport(videoId, timestamp);
+        clearReport(videoId);
         res.sendStatus(200);
     } else {
         res.sendStatus(400);
@@ -75,7 +75,12 @@ router.post("/reject", async (req, res) => {
 
 });
 
-function clearReport(uuid, timestamp) {
+function clearReport(uuid, timestamp = null) {
+
+    if (timestamp == null) {
+        database.prepare("DELETE FROM reports WHERE uuid = ?").run([uuid]);
+        return;
+    }
 
     database.prepare("DELETE FROM reports WHERE uuid = ? AND timestamp = ?").run([uuid, timestamp]);
 
