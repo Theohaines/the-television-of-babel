@@ -89,8 +89,6 @@ function hideElement(ID){
 }
 
 //NEW MOBILE SHIT IM TESTING
-var Shake = require('shake.js');
-
 var shakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
     timeout: 1000 // optional, determines the frequency of event generation

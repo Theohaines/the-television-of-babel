@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const uuid = require("uuid");
 const cookieParser = require("cookie-parser");
+const Shake = require('shake.js');
 require("dotenv").config();
 
 const app = express();
