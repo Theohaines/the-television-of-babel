@@ -99,3 +99,7 @@
         margin-top: 40%;
     }
 }
+
+#UUIDText {
+    cursor: pointer;
+}

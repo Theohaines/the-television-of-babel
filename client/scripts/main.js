@@ -67,8 +67,8 @@ async function toggleVideo() {
         staticImage.style.display = "none";
         staticAudio.pause();
         staticAudio.currentTime = 0;
-        video.src = videoUrl
-        grabVideoUUID(videoUrl)
+        video.src = videoUrl;
+        grabVideoUUID(videoUrl);
 
         clearInterval(toggler);
     }, 2000);
@@ -100,6 +100,12 @@ addEventListener("keypress", event => {
     }
 });
 
+videoUUIDText.addEventListener("click", () => {
+    if (videoUUIDText.innerHTML.startsWith("Loading")) return;
+    
+    navigator.clipboard.writeText(`${location.protocol}//${location.host}/?uuid=${videoUUIDText.innerHTML}`);
+});
+
 let toggler = setInterval(() => {
     staticAudio.play().then(() => {
         clearInterval(toggler);
@@ -110,7 +116,20 @@ let toggler = setInterval(() => {
 staticAudio.volume = 0.1;
 video.volume = 0.1;
 splashTextUpdater();
-toggleVideo();
+
+let queryParameters = new URLSearchParams(location.search);
+let permalinkId = queryParameters.get("uuid");
+
+if (permalinkId) {
+    video.style.display = "block";
+    staticImage.style.display = "none";
+    staticAudio.pause();
+    staticAudio.currentTime = 0;
+    video.src = "/media/" + permalinkId;
+    grabVideoUUID("/media/" + permalinkId);
+} else {
+    toggleVideo();
+}
 
 let splashTick = 0;
 setInterval(() => {
