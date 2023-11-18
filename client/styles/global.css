@@ -74,3 +74,9 @@ body{
     float: right;
     font-size: x-large;
 }
+
+.Footer button{
+    background-color: #2e3131;
+    width: 100%;
+    display: block;
+}
