@@ -89,18 +89,6 @@ function hideElement(ID){
 }
 
 //NEW MOBILE SHIT IM TESTING
-var shakeEvent = new Shake({
-    threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
-});
-
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-    alert('shake!');
-    toggleVideo();
-}
 
 addEventListener("keypress", event => {
     if (event.key == "4") {
