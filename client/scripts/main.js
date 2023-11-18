@@ -106,13 +106,6 @@ videoUUIDText.addEventListener("click", () => {
     navigator.clipboard.writeText(`${location.protocol}//${location.host}/?uuid=${videoUUIDText.innerHTML}`);
 });
 
-let toggler = setInterval(() => {
-    staticAudio.play().then(() => {
-        clearInterval(toggler);
-    });
-}, 100);
-
-
 staticAudio.volume = 0.1;
 video.volume = 0.1;
 splashTextUpdater();
@@ -128,6 +121,12 @@ if (permalinkId) {
     video.src = "/media/" + permalinkId;
     grabVideoUUID("/media/" + permalinkId);
 } else {
+    let toggler = setInterval(() => {
+        staticAudio.play().then(() => {
+            clearInterval(toggler);
+        });
+    }, 100);
+    
     toggleVideo();
 }
 
