@@ -40,24 +40,21 @@ router.get("/get", async (req, res) => {
 
 router.post("/accept", async (req, res) => {
 
-    console.log("accept request received");
-
     try {
         var videoId = req.body.uuid;
-        var timestamp = req.body.timestamp;
-        console.log("videoId and timestamp in accept request calculated")
     } catch (err) {
-        console.log(err.toString());
         return res.sendStatus(400);
     }
 
     if (req.auth) {
-        fs.rmSync("media/" + videoId);
-        console.log("removed from media successfully")
+        try {
+            fs.rmSync("media/" + videoId);
+        } catch (err) {
+            res.send("Report removed, file not found on the server.");
+        }
         clearReport(videoId);
         res.sendStatus(200);
     } else {
-        console.log("no req.auth so yeah")
         res.sendStatus(400);
     }
 
