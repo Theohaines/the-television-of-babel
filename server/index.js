@@ -81,7 +81,7 @@ app.get("/getvideo", async (req, res) => {
 
 app.get("/getvideocount", async (req, res) => {
 
-    res.send(fs.readdirSync("media").length);
+    res.send(fs.readdirSync("media").length.toString());
 
 });
 
@@ -96,7 +96,7 @@ app.get("/admin", async (req, res) => {
     if (req.auth) {
         res.sendFile(path.resolve("client/admin.html"));
     } else {
-        res.redirect("/");
+        res.redirect("/login");
     }
 
 });
