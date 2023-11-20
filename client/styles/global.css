@@ -1,4 +1,5 @@
- /* Global style sheet is used for styles that are used across all pages but can be overridden by other CSS files */
+/* Global style sheet is used for styles that are used across all pages but can be overridden by other CSS files */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 @font-face {
@@ -6,6 +7,7 @@
     src: url(../images/MinecraftRegular-Bmg3.otf);
   }
 
+/* All */
 *{
     margin: 0;
     padding: 0;
@@ -13,10 +15,13 @@
     color: #e0e0e0;
 }
 
+/* Body */
 body{
     background-color: #121212;
 }
 
+
+/* Header */
 .Header{
     background-color: #2e3131;
 }
@@ -45,6 +50,8 @@ body{
     font-family: "Minceraft";
 }
 
+
+/* Footer */
 .Footer {
     position: fixed;
     left: 0;
@@ -73,6 +80,7 @@ body{
     text-align: right;
     float: right;
     font-size: x-large;
+    margin-right: 1vw;
 }
 
 .Footer button{

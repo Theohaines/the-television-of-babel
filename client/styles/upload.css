@@ -1,30 +1,30 @@
-.PageContainer{
-    width: fit-content;
-    height: fit-content;
-    padding: 20px;
-    margin: auto;
-    top: 25%;
-}
-
+/* File Upload Form */
 .FileUploadForm{
     text-align-last: center;
     background-color: #2e3131;
     padding: 10px;
     border: solid black 2px;
 }
-
 .FileUploadForm input{
     margin: auto;
     display: block;
     margin-top: 10px;
 }
-
 .FileUploadForm input[type="submit"]{
     width: 90%;
     height: 30px;
     background-color: #2e3131;
 }
-
 .FileUploadForm p{
     margin-top: 5px;
+}
+
+
+/* Page Container */
+.PageContainer{
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin: auto;
+    top: 25%;
 }
