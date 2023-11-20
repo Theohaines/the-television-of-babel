@@ -79,9 +79,13 @@ app.get("/getvideo", async (req, res) => {
 
 });
 
-app.get("/getvideocount", async (req, res) => {
+app.get("/statistics", async (req, res) => {
 
-    res.send(fs.readdirSync("media").length.toString());
+    let videoCount = fs.readdirSync("media").length - 1;
+    
+    res.json({
+        count: videoCount
+    });
 
 });
 

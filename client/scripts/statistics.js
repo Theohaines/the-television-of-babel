@@ -1,18 +1,18 @@
 let totalVideosCounter = document.querySelector("#TotalVideosCounter");
 
-async function getTotalVideos() {
+async function getStatistics() {
 
     try {
-        var totalVideoCount = await fetch("/getvideocount", {
+        var statistics = await fetch("/statistics", {
             "method": "GET"
         });
-        return parseInt(await totalVideoCount.text());
+        return await statistics.json();
     } catch (err) {
         return 0;
     }
 
 }
 
-getTotalVideos().then(totalVideoCount => {
-    totalVideosCounter.innerHTML = totalVideoCount
+getStatistics().then(statistics => {
+    totalVideosCounter.innerHTML = statistics.count;
 });
