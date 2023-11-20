@@ -25,9 +25,28 @@
         <form method="post" action="/report/create" style="margin-top: 4vh;">
             <h3>Report video</h3>
             <input type="text" name="VideoUUID" id="VideoUUIDInput" placeholder="UUID here" readonly>
-            <textarea name="ReportReason" id="ReportReason" cols="30" rows="10" placeholder="Report reason" required></textarea>
-            <input type="button" onclick="toggleReportMenu()" value="Close report menu">
+            <select name="ReportReasonSelection" id="ReportReasonSelection" onchange="setReportReason(); toggleReportReasonEdit()">
+                <option value="0" disabled selected>Please select a report reason</option>
+                <optgroup label="Terms-of-service">
+                    <option value="1">TikTok reupload</option>
+                    <option value="2">Long form content (more than ~ 2 minutes)</option>
+                    <option value="3">Copyright infringement (non Transformative)</option>
+                    <option value="4">Explicit content</option>
+                    <option value="5">Extremism</option>
+                    <option value="6">Advertisement</option>
+                    <option value="7">Doxxing</option>
+                    <option value="8">Gore</option>
+                </optgroup>
+                <optgroup label="Misc">
+                    <option value="9">Reupload</option>
+                    <option value="10">Low effort</option>
+                    <option value="11">Slop</option>
+                    <option value="12">Other reason</option>
+                </optgroup>
+            </select>
+            <textarea name="ReportReason" id="ReportReason" cols="30" rows="10" placeholder="Report reason" readonly required></textarea>
             <input type="submit" value="Submit report">
+            <input type="button" onclick="toggleReportMenu()" value="Close report menu">
         </form>
     </div>
 

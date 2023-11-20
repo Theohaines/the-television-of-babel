@@ -34,7 +34,10 @@ const splashTexts = [
     "i hope ye like leather",
     "Are you sure you wanna refund this item?",
     "You will die!",
-    "STOP POSTING FEET!"
+    "STOP POSTING FEET!",
+    "New TOS!",
+    "Slopping all over the place",
+    "Slop content is bannable!"
 ];
 
 const videoUUIDInput = document.getElementById("VideoUUIDInput");

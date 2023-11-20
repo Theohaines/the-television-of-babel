@@ -58,6 +58,16 @@
     color: #fff;
 }
 
+.ReportMenu select{
+    width: 90%;
+    height: 30px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #2e3131;
+    color: #fff;
+}
+
 .ReportMenu textarea{
     width: 90%;
     display: block;
@@ -73,6 +83,7 @@
     margin: auto;
     background-color: #2e3131;
     color: #fff;
+    margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 600px) {
