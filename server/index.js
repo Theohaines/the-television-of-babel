@@ -6,6 +6,8 @@ const uuid = require("uuid");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
+const verifyCaptcha = require("./captcha");
+
 const app = express();
 const fileParser = multer({
     storage: multer.diskStorage({
@@ -23,8 +25,9 @@ const fileParser = multer({
     limits: {
         fileSize: 64 * 1024 * 1024
     },
-    fileFilter: (req, file, save) => {
+    fileFilter: async (req, file, save) => {
         let ext = path.extname(file.originalname).slice(1);
+
         if (!["mp4","avi","mov","asf","wmv"].includes(ext)) {
             return save(new Error("Only videos are allowed."));
         }
