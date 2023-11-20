@@ -1,0 +1,9 @@
+.TermsOfServiceContainer{
+    width: 60%;
+    background-color: #2e3131;
+    border: black solid 2px;
+    margin: auto;
+    margin-top: 25px;
+    padding: 10px;
+    text-align: center;
+}
