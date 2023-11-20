@@ -24,8 +24,8 @@ router.post("/create", async (req, res) => {
 
     database.prepare("INSERT INTO reports (uuid, reason, timestamp) VALUES (?, ?, ?)").run(videoId, reportReason, Date.now());
 
-    window.href = "https://theohaines.xyz";
-    alert("Thankyou for your report, it will be reviewed soon.");
+    res.send("Thank you for your report. It will be reviewed soon. <a href='https://theohaines.xyz'>Go back.</a>");
+
 });
 
 router.get("/get", async (req, res) => {
