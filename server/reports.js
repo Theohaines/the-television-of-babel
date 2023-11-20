@@ -13,8 +13,12 @@ router.post("/create", async (req, res) => {
 
     try {
         var videoId = req.body["VideoUUID"];
-        var reportReason = req.body["ReportReason"];
+        var reportReason = req.body["ReportReason"].replace(/[<>]/g, "").slice(0, 1024);
     } catch (err) {
+        return res.sendStatus(400);
+    }
+
+    if (!fs.readdirSync("media").includes(videoId)) {
         return res.sendStatus(400);
     }
 
