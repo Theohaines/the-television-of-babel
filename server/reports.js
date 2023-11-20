@@ -18,6 +18,10 @@ router.post("/create", async (req, res) => {
         return res.sendStatus(400);
     }
 
+    if (!fs.readdirSync("media").includes(videoId)) {
+        return res.sendStatus(400);
+    }
+
     database.prepare("INSERT INTO reports (uuid, reason, timestamp) VALUES (?, ?, ?)").run(videoId, reportReason, Date.now());
 
     res.send("Thank you for your report. It will be reviewed soon.");
