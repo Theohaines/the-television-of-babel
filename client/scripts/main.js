@@ -121,6 +121,11 @@ splashTextUpdater();
 
 let queryParameters = new URLSearchParams(location.search);
 let permalinkId = queryParameters.get("uuid");
+let reportRedirect = queryParameters.get("report");
+
+if (reportRedirect) {
+    alert("Thank you for your report, it will be reviewed shortly.");
+}
 
 if (permalinkId) {
     video.style.display = "block";
