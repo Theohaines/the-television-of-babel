@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/upload.css">
     <link rel="icon" href="images/favicon.ico">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>BabelTV - upload</title>
 </head>
 <body>
@@ -19,11 +19,8 @@
             <h2>Upload</h2>
             <input name="UploadedVideo" type="file">
             <input type="submit" value="Upload">
-            <button class="g-recaptcha" 
-                data-sitekey="6Lf-9RUpAAAAAMgy4F0nREj1b_IP8j3S-Cm1N2sF" 
-                data-callback='onSubmit' 
-                data-action='submit'>Submit
-            </button>
+            <div class="g-recaptcha" data-sitekey="6LdF-hUpAAAAABqw4TNl7XD_9qz1HaC1277HPlG8"></div>
+            <br/>
             <p>By uploading a video you are agreeing to our <a href="tos.html">Terms of service</a> and <a href="tos.html">privacy policy</a>.</p>
             <p>Accepted formats: .mp4 .avi .mov .asf .wmv</p>
             <p>Max upload 64mb</p>

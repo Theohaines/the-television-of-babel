@@ -88,3 +88,7 @@ body{
     width: 100%;
     display: block;
 }
+
+.g-recaptcha{
+    margin: auto;
+}
