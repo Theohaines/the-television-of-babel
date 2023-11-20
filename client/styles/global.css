@@ -89,6 +89,8 @@ body{
     display: block;
 }
 
-.g-recaptcha{
+.g-recaptcha div{
+    width: 100%;
     margin: auto;
+    margin-top: 5px;
 }
