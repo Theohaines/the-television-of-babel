@@ -91,41 +91,6 @@ function hideElement(ID){
     document.getElementById(ID).style.display = "none";
 }
 
-//NEW MOBILE SHIT IM TESTING
-
-if (window.DeviceMotionEvent) {
-    // Register a handler for the device motion event
-    window.addEventListener('devicemotion', handleMotion);
-} else {
-    console.log("DeviceMotionEvent is not supported");
-}
-  
-  // Threshold for considering a shake
-const shakeThreshold = 15;
-  
-  // Function to handle device motion
-function handleMotion(event) {
-    // Get acceleration including gravity
-    let acceleration = event.accelerationIncludingGravity;
-  
-    // Calculate total acceleration magnitude
-    let totalAcceleration = Math.sqrt(
-      Math.pow(acceleration.x, 2) +
-      Math.pow(acceleration.y, 2) +
-      Math.pow(acceleration.z, 2)
-    );
-  
-    // Check if the total acceleration exceeds the threshold
-    if (totalAcceleration > shakeThreshold) {
-      // Device is shaken
-      console.log("Device shaken!");
-      
-        toggleVideo();
-    }
-}
-
-//NORMAL PEOPLE STUFF
-
 addEventListener("keypress", event => {
     if (event.key == "4") {
         console.log("         .-\"\"\"\"\"\"-.\n" +
@@ -183,3 +148,38 @@ setInterval(() => {
     splashTick += 0.05;
     splashText.style.transform = `rotate(${splashSize}deg)`;
 }, 10);
+
+//NEW MOBILE SHIT IM TESTING
+
+if (window.DeviceMotionEvent) {
+    // Register a handler for the device motion event
+    window.addEventListener('devicemotion', handleMotion);
+} else {
+    console.log("DeviceMotionEvent is not supported");
+}
+  
+  // Threshold for considering a shake
+const shakeThreshold = 15;
+  
+  // Function to handle device motion
+function handleMotion(event) {
+    // Get acceleration including gravity
+    let acceleration = event.accelerationIncludingGravity;
+  
+    // Calculate total acceleration magnitude
+    let totalAcceleration = Math.sqrt(
+      Math.pow(acceleration.x, 2) +
+      Math.pow(acceleration.y, 2) +
+      Math.pow(acceleration.z, 2)
+    );
+  
+    // Check if the total acceleration exceeds the threshold
+    if (totalAcceleration > shakeThreshold) {
+      // Device is shaken
+      console.log("Device shaken!");
+      
+        toggleVideo();
+    }
+}
+
+//NORMAL PEOPLE STUFF
