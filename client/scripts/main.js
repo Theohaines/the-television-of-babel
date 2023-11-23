@@ -178,6 +178,7 @@ if (window.DeviceMotionEvent) {
   
       // Check if the total acceleration exceeds the threshold and cooldown has passed
       if (totalAcceleration > shakeThreshold && !isCooldown && currentTime - lastShakeTime > cooldownDuration) {
+        window.removeEventListener('devicemotion', handleMotion);
         // Device is shaken and cooldown has passed
         console.log("Device shaken!");
   
@@ -192,9 +193,6 @@ if (window.DeviceMotionEvent) {
   
         // Add your action here...
         toggleVideo();
-  
-        // Remove the event listener after detecting the shake
-        window.removeEventListener('devicemotion', handleMotion);
       }
     }
   } else {
