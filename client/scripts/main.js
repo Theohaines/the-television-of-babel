@@ -150,6 +150,7 @@ setInterval(() => {
 }, 10);
 
 //NEW MOBILE SHIT IM TESTING
+var canShake = true;
 
 var btn_reqPermission = document.getElementById("btn_reqPermission")
 btn_reqPermission.addEventListener("click", () => { this.checkMotionPermission() })
@@ -204,10 +205,12 @@ async function setMotionListeners() {
         // Using rotationRate, which essentially is velocity,
         // we check each axis (alpha, beta, gamma) whether they cross a threshold (e.g. 256).
         // Lower = more sensitive, higher = less sensitive. 256 works nice, imho.
-        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256)) {
+        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256 && canShake == true)) {
             this.output_message.innerHTML = "SHAKEN!"
+            canShake = false;
             toggleVideo();
             setTimeout(() => {
+                canShake = true
                 this.message.innerHTML = null
             }, "2000")
         }
