@@ -155,7 +155,7 @@ setInterval(() => {
 if (window.DeviceMotionEvent) {
 let isShakeDetected = false; // Flag to track if shake is detected
 let lastShakeTime = 0; // Variable to track the last shake time
-const shakeThreshold = 500; // Threshold for considering a shake
+const shakeThreshold = 1000; // Threshold for considering a shake
 const cooldownDuration = 2100; // 1 second cooldown duration in milliseconds
 
 // Register a handler for the device motion event
