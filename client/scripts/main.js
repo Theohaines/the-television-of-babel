@@ -153,51 +153,52 @@ setInterval(() => {
 
 // Check if the device supports DeviceMotionEvent
 if (window.DeviceMotionEvent) {
-let isShakeDetected = false; // Flag to track if shake is detected
-let lastShakeTime = 0; // Variable to track the last shake time
-const shakeThreshold = 1000; // Threshold for considering a shake
-const cooldownDuration = 2100; // 1 second cooldown duration in milliseconds
-
-// Register a handler for the device motion event
-window.addEventListener('devicemotion', handleMotion);
-console.log("DeviceMotionEvent is supported");
-
-// Function to handle device motion
-function handleMotion(event) {
-    // Get acceleration including gravity
-    let acceleration = event.accelerationIncludingGravity;
-
-    // Calculate total acceleration magnitude
-    let totalAcceleration = Math.sqrt(
+    let lastShakeTime = 0; // Variable to track the last shake time
+    const shakeThreshold = 1000; // Threshold for considering a shake
+    const cooldownDuration = 2100; // 1 second cooldown duration in milliseconds
+    let isCooldown = false; // Flag to track cooldown
+  
+    // Register a handler for the device motion event
+    window.addEventListener('devicemotion', handleMotion);
+  
+    // Function to handle device motion
+    function handleMotion(event) {
+      // Get acceleration including gravity
+      let acceleration = event.accelerationIncludingGravity;
+  
+      // Calculate total acceleration magnitude
+      let totalAcceleration = Math.sqrt(
         Math.pow(acceleration.x, 2) +
         Math.pow(acceleration.y, 2) +
         Math.pow(acceleration.z, 2)
-    );
-
-    // Get the current timestamp
-    let currentTime = new Date().getTime();
-
-    // Check if the total acceleration exceeds the threshold and cooldown has passed
-    if (totalAcceleration > shakeThreshold && !isShakeDetected && currentTime - lastShakeTime > cooldownDuration) {
+      );
+  
+      // Get the current timestamp
+      let currentTime = new Date().getTime();
+  
+      // Check if the total acceleration exceeds the threshold and cooldown has passed
+      if (totalAcceleration > shakeThreshold && !isCooldown && currentTime - lastShakeTime > cooldownDuration) {
         // Device is shaken and cooldown has passed
         console.log("Device shaken!");
-        
-        // Set the flag to indicate shake detected
-        isShakeDetected = true;
-
+  
+        // Set the cooldown flag
+        isCooldown = true;
+  
         // Update the last shake time
         lastShakeTime = currentTime;
-
+  
+        // Perform your action here when the device is shaken
+        // For example, trigger an event or call a function
+  
+        // Add your action here...
         toggleVideo();
-        
-        // Reset the flag after the cooldown period
-        setTimeout(() => {
-            isShakeDetected = false;
-        }, cooldownDuration);
+  
+        // Remove the event listener after detecting the shake
+        window.removeEventListener('devicemotion', handleMotion);
+      }
     }
-}
-} else {
+  } else {
     console.log("DeviceMotionEvent is not supported");
-}
+  }
 
 //NORMAL PEOPLE STUFF
