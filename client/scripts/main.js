@@ -153,8 +153,8 @@ setInterval(() => {
 
 if (window.DeviceMotionEvent) {
     let lastShakeTime = 0; // Variable to track the last shake time
-    const shakeThreshold = 15; // Threshold for considering a shake
-    const cooldownDuration = 1000; // 1 second cooldown duration in milliseconds
+    const shakeThreshold = 100; // Threshold for considering a shake
+    const cooldownDuration = 2.1; // 1 second cooldown duration in milliseconds
 
     // Register a handler for the device motion event
     window.addEventListener('devicemotion', handleMotion);
