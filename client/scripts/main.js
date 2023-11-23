@@ -152,35 +152,42 @@ setInterval(() => {
 //NEW MOBILE SHIT IM TESTING
 
 if (window.DeviceMotionEvent) {
+    let lastShakeTime = 0; // Variable to track the last shake time
+    const shakeThreshold = 15; // Threshold for considering a shake
+    const cooldownDuration = 1000; // 1 second cooldown duration in milliseconds
+
     // Register a handler for the device motion event
     window.addEventListener('devicemotion', handleMotion);
-    console.log("DeviceMotionEvent supported")
-} else {
-    console.log("DeviceMotionEvent is not supported");
-}
-  
-  // Threshold for considering a shake
-const shakeThreshold = 30;
-  
-  // Function to handle device motion
-function handleMotion(event) {
+    console.log("DeviceMotionEvent is supported");
+
+    // Function to handle device motion
+    function handleMotion(event) {
     // Get acceleration including gravity
     let acceleration = event.accelerationIncludingGravity;
-  
+
     // Calculate total acceleration magnitude
     let totalAcceleration = Math.sqrt(
-      Math.pow(acceleration.x, 2) +
-      Math.pow(acceleration.y, 2) +
-      Math.pow(acceleration.z, 2)
+        Math.pow(acceleration.x, 2) +
+        Math.pow(acceleration.y, 2) +
+        Math.pow(acceleration.z, 2)
     );
-  
-    // Check if the total acceleration exceeds the threshold
-    if (totalAcceleration > shakeThreshold) {
-      // Device is shaken
-      console.log("Device shaken!");
-      
+
+    // Get the current timestamp
+    let currentTime = new Date().getTime();
+
+    // Check if the total acceleration exceeds the threshold and cooldown has passed
+    if (totalAcceleration > shakeThreshold && currentTime - lastShakeTime > cooldownDuration) {
+        // Device is shaken and cooldown has passed
+        console.log("Device shaken!");
+        
+        // Update the last shake time
+        lastShakeTime = currentTime;
+
         toggleVideo();
     }
+    }
+} else {
+    console.log("DeviceMotionEvent is not supported");
 }
 
 //NORMAL PEOPLE STUFF
