@@ -177,4 +177,6 @@ document.querySelector("#btn_reqPermission").addEventListener("click", () => {
     queueShakeEvent();
 });
 
+queueShakeEvent();
+
 //NORMAL PEOPLE STUFF
