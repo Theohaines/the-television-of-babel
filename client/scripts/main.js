@@ -165,6 +165,7 @@ document.querySelector("#btn_reqPermission").addEventListener("click", () => {
     DeviceMotionEvent.requestPermission().then(() => {
         addEventListener("devicemotion", event => {
             if ((event.rotationRate.alpha > 512 || event.rotationRate.beta > 512 || event.rotationRate.gamma > 512) && !inStatic) {
+                inStatic = true;
                 toggleVideo();
             }
         });
