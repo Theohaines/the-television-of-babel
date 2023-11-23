@@ -151,17 +151,19 @@ setInterval(() => {
 
 //NEW MOBILE SHIT IM TESTING
 
+// Check if the device supports DeviceMotionEvent
 if (window.DeviceMotionEvent) {
-    let lastShakeTime = 0; // Variable to track the last shake time
-    const shakeThreshold = 100; // Threshold for considering a shake
-    const cooldownDuration = 2100; // 2.1 second cooldown duration in milliseconds
+let isShakeDetected = false; // Flag to track if shake is detected
+let lastShakeTime = 0; // Variable to track the last shake time
+const shakeThreshold = 30; // Threshold for considering a shake
+const cooldownDuration = 2100; // 1 second cooldown duration in milliseconds
 
-    // Register a handler for the device motion event
-    window.addEventListener('devicemotion', handleMotion);
-    console.log("DeviceMotionEvent is supported");
+// Register a handler for the device motion event
+window.addEventListener('devicemotion', handleMotion);
+console.log("DeviceMotionEvent is supported");
 
-    // Function to handle device motion
-    function handleMotion(event) {
+// Function to handle device motion
+function handleMotion(event) {
     // Get acceleration including gravity
     let acceleration = event.accelerationIncludingGravity;
 
@@ -176,14 +178,24 @@ if (window.DeviceMotionEvent) {
     let currentTime = new Date().getTime();
 
     // Check if the total acceleration exceeds the threshold and cooldown has passed
-    if (totalAcceleration > shakeThreshold && currentTime - lastShakeTime > cooldownDuration) {
-        deviceshake
+    if (totalAcceleration > shakeThreshold && !isShakeDetected && currentTime - lastShakeTime > cooldownDuration) {
+        // Device is shaken and cooldown has passed
         console.log("Device shaken!");
+        
+        // Set the flag to indicate shake detected
+        isShakeDetected = true;
+
+        // Update the last shake time
         lastShakeTime = currentTime;
 
         toggleVideo();
+        
+        // Reset the flag after the cooldown period
+        setTimeout(() => {
+            isShakeDetected = false;
+        }, cooldownDuration);
     }
-    }
+}
 } else {
     console.log("DeviceMotionEvent is not supported");
 }
