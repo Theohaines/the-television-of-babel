@@ -154,7 +154,7 @@ setInterval(() => {
 if (window.DeviceMotionEvent) {
     let lastShakeTime = 0; // Variable to track the last shake time
     const shakeThreshold = 100; // Threshold for considering a shake
-    const cooldownDuration = 2.1; // 1 second cooldown duration in milliseconds
+    const cooldownDuration = 2100; // 2.1 second cooldown duration in milliseconds
 
     // Register a handler for the device motion event
     window.addEventListener('devicemotion', handleMotion);
@@ -177,10 +177,8 @@ if (window.DeviceMotionEvent) {
 
     // Check if the total acceleration exceeds the threshold and cooldown has passed
     if (totalAcceleration > shakeThreshold && currentTime - lastShakeTime > cooldownDuration) {
-        // Device is shaken and cooldown has passed
+        deviceshake
         console.log("Device shaken!");
-        
-        // Update the last shake time
         lastShakeTime = currentTime;
 
         toggleVideo();
