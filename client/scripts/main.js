@@ -151,52 +151,67 @@ setInterval(() => {
 
 //NEW MOBILE SHIT IM TESTING
 
-// Check if the device supports DeviceMotionEvent
-if (window.DeviceMotionEvent) {
-    let lastShakeTime = 0; // Variable to track the last shake time
-    const shakeThreshold = 15; // Threshold for considering a shake
-    const cooldownDuration = 2100; // 1 second cooldown duration in milliseconds
-    let isCooldown = false; // Flag to track cooldown
-  
-    // Register a handler for the device motion event
-    window.addEventListener('devicemotion', handleMotion);
-  
-    // Function to handle device motion
-    function handleMotion(event) {
-      // Get acceleration including gravity
-      let acceleration = event.accelerationIncludingGravity;
-  
-      // Calculate total acceleration magnitude
-      let totalAcceleration = Math.sqrt(
-        Math.pow(acceleration.x, 2) +
-        Math.pow(acceleration.y, 2) +
-        Math.pow(acceleration.z, 2)
-      );
-  
-      // Get the current timestamp
-      let currentTime = new Date().getTime();
-  
-      // Check if the total acceleration exceeds the threshold and cooldown has passed
-      if (totalAcceleration > shakeThreshold && !isCooldown && currentTime - lastShakeTime > cooldownDuration) {
-        window.removeEventListener('devicemotion', handleMotion);
-        // Device is shaken and cooldown has passed
-        console.log("Device shaken!");
-  
-        // Set the cooldown flag
-        isCooldown = true;
-  
-        // Update the last shake time
-        lastShakeTime = currentTime;
-  
-        // Perform your action here when the device is shaken
-        // For example, trigger an event or call a function
-  
-        // Add your action here...
-        toggleVideo();
-      }
+var btn_reqPermission = document.getElementById("btn_reqPermission")
+btn_reqPermission.addEventListener("click", () => { this.checkMotionPermission() })
+
+
+// ON PAGE LOAD
+this.checkMotionPermission()
+
+
+// FUNCTIONS
+async function checkMotionPermission() {
+
+    // Any browser using requestPermission API
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+        // If previously granted, user will see no prompts and listeners get setup right away.
+        // If error, we show special UI to the user.
+        // FYI, "requestPermission" acts more like "check permission" on the device.
+        await DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+            if (permissionState == 'granted') {
+                // Hide special UI; no longer needed
+                btn_reqPermission.style.display = "none"
+                this.setMotionListeners()
+            }
+        })
+        .catch( (error) => {
+            console.log("Error getting sensor permission: %O", error)
+            // Show special UI to user, suggesting they should allow motion sensors. The tap-or-click on the button will invoke the permission dialog.
+            btn_reqPermission.style.display = "block"
+        })
+
+    // All other browsers
+    } else {
+        this.setMotionListeners()
     }
-  } else {
-    console.log("DeviceMotionEvent is not supported");
-  }
+
+}
+
+async function setMotionListeners() {
+
+    // ORIENTATION LISTENER
+    await window.addEventListener('orientation', event => {
+        console.log('Device orientation event: %O', event)
+    })
+
+    // MOTION LISTENER
+    await window.addEventListener('devicemotion', event => {
+        console.log('Device motion event: %O', event)
+
+        // SHAKE EVENT
+        // Using rotationRate, which essentially is velocity,
+        // we check each axis (alpha, beta, gamma) whether they cross a threshold (e.g. 256).
+        // Lower = more sensitive, higher = less sensitive. 256 works nice, imho.
+        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256)) {
+            this.output_message.innerHTML = "SHAKEN!"
+            toggleVideo();
+            setTimeout(() => {
+                this.message.innerHTML = null
+            }, "2000")
+        }
+    })
+}
 
 //NORMAL PEOPLE STUFF
