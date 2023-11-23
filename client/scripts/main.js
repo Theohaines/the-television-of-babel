@@ -75,6 +75,8 @@ async function toggleVideo() {
             grabVideoUUID(videoUrl);
     
             clearInterval(toggler);
+
+            queueShakeEvent();
         }, 2000);
     } else {
         console.log("Cannot change video, reason: IN STATIC")
@@ -161,16 +163,18 @@ btn_reqPermission.addEventListener("click", () => { this.checkMotionPermission()
 
 
 // ON PAGE LOAD
-document.querySelector("#btn_reqPermission").addEventListener("click", () => {
+function queueShakeEvent() {
     DeviceMotionEvent.requestPermission().then(() => {
         addEventListener("devicemotion", event => {
-            if ((event.rotationRate.alpha > 512 || event.rotationRate.beta > 512 || event.rotationRate.gamma > 512) && !inStatic) {
-                inStatic = true;
+            if (event.rotationRate.alpha > 512 || event.rotationRate.beta > 512 || event.rotationRate.gamma > 512) {
                 toggleVideo();
-                document.body.innerHTML = "motion event ran";
             }
-        });
+        }, {"once": true});
     });
+}
+
+document.querySelector("#btn_reqPermission").addEventListener("click", () => {
+    queueShakeEvent();
 });
 
 //NORMAL PEOPLE STUFF
