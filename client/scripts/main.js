@@ -167,6 +167,7 @@ document.querySelector("#btn_reqPermission").addEventListener("click", () => {
             if ((event.rotationRate.alpha > 512 || event.rotationRate.beta > 512 || event.rotationRate.gamma > 512) && !inStatic) {
                 inStatic = true;
                 toggleVideo();
+                document.body.innerHTML = "motion event ran";
             }
         });
     });
