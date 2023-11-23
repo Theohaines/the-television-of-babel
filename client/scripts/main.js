@@ -205,12 +205,10 @@ async function setMotionListeners() {
         // Using rotationRate, which essentially is velocity,
         // we check each axis (alpha, beta, gamma) whether they cross a threshold (e.g. 256).
         // Lower = more sensitive, higher = less sensitive. 256 works nice, imho.
-        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256 && canShake == true)) {
+        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256 && inStatic == false)) {
             this.output_message.innerHTML = "SHAKEN!"
-            canShake = false;
             toggleVideo();
             setTimeout(() => {
-                canShake = true
                 this.message.innerHTML = null
             }, "2000")
         }
