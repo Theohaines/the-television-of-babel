@@ -55,26 +55,30 @@ async function fetchVideo() {
 }
 
 async function toggleVideo() {
-    let videoUrl = await fetchVideo();
-    if (!videoUrl) return;
-
-    inStatic = true;
-    video.style.display = "none";
-    video.src = ""
-    staticImage.style.display = "block";
-    staticAudio.play();
-
-    setTimeout(() => {
-        inStatic = false;
-        video.style.display = "block";
-        staticImage.style.display = "none";
-        staticAudio.pause();
-        staticAudio.currentTime = 0;
-        video.src = videoUrl;
-        grabVideoUUID(videoUrl);
-
-        clearInterval(toggler);
-    }, 2000);
+    if (inStatic == false){
+        let videoUrl = await fetchVideo();
+        if (!videoUrl) return;
+    
+        inStatic = true;
+        video.style.display = "none";
+        video.src = ""
+        staticImage.style.display = "block";
+        staticAudio.play();
+    
+        setTimeout(() => {
+            inStatic = false;
+            video.style.display = "block";
+            staticImage.style.display = "none";
+            staticAudio.pause();
+            staticAudio.currentTime = 0;
+            video.src = videoUrl;
+            grabVideoUUID(videoUrl);
+    
+            clearInterval(toggler);
+        }, 2000);
+    } else {
+        console.log("Cannot change video, reason: IN STATIC")
+    }
 }
 
 function splashTextUpdater(){
@@ -205,7 +209,7 @@ async function setMotionListeners() {
         // Using rotationRate, which essentially is velocity,
         // we check each axis (alpha, beta, gamma) whether they cross a threshold (e.g. 256).
         // Lower = more sensitive, higher = less sensitive. 256 works nice, imho.
-        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256 && inStatic == false)) {
+        if ((event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256)) {
             this.output_message.innerHTML = "SHAKEN!"
             toggleVideo();
             setTimeout(() => {
