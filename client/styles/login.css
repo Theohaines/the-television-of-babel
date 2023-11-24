@@ -23,7 +23,7 @@
     margin-bottom: 10px;
     display: block;
 }
-.LoginPanel input[type="submit"]{
+.LoginPanel input[type="submit"],[type="button"]{
     width: 90%;
     height: 30px;
     background-color: #2e3131;
