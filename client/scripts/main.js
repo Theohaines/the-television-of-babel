@@ -158,10 +158,9 @@ setInterval(() => {
 
     myShakeEvent.start();
 
-    window.addEventListener('shake', shakeEventDidOccur, false);
-
-    //function to call when shake occurs
     function shakeEventDidOccur () {
         toggleVideo();
     }
+
+    window.addEventListener('shake', shakeEventDidOccur, false);
 //NORMAL PEOPLE STUFF
