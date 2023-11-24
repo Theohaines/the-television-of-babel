@@ -183,6 +183,7 @@ if (window.DeviceMotionEvent) {
     if (totalAcceleration > shakeThreshold) {
       // Device is shaken
       console.log("Device shaken!");
+      toggleVideo();
       
       // Perform your action here when the device is shaken
       // For example, trigger an event or call a function
