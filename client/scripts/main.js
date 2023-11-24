@@ -165,7 +165,7 @@ btn_reqPermission.addEventListener("click", () => { this.checkMotionPermission()
 // ON PAGE LOAD
 if (window.DeviceMotionEvent){
     addEventListener("devicemotion", event => {
-        if (event.rotationRate.alpha > 512 || event.rotationRate.beta > 512 || event.rotationRate.gamma > 512) {
+        if (event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256) {
             toggleVideo();
         }
     }, {"once": true});
