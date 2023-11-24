@@ -161,7 +161,7 @@ if (window.DeviceMotionEvent) {
 }
     
     // Threshold for considering a shake
-const shakeThreshold = 256;
+const shakeThreshold = 15;
   
   // Function to handle device motion
 function handleMotion(event) {
