@@ -155,11 +155,7 @@ setInterval(() => {
     // Check if the device supports DeviceMotionEvent
 if (window.DeviceMotionEvent) {
     // Register a handler for the device motion event
-    window.addEventListener("devicemotion", function() {
-
-        handleMotion()
-    
-    }, {once : true});
+    window.addEventListener('devicemotion', handleMotion);
 } else {
     console.log("DeviceMotionEvent is not supported");
 }
@@ -169,6 +165,7 @@ const shakeThreshold = 15;
   
   // Function to handle device motion
 function handleMotion(event) {
+    window.removeEventListener('devicemotion');
     // Get acceleration including gravity
     let acceleration = event.accelerationIncludingGravity;
 
