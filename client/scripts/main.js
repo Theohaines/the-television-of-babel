@@ -156,19 +156,38 @@ setInterval(() => {
 }, 10);
 
 //NEW MOBILE SHIT IM TESTING
-var canShake = true;
-
-var btn_reqPermission = document.getElementById("btn_reqPermission")
-btn_reqPermission.addEventListener("click", () => { this.checkMotionPermission() })
-
-
-// ON PAGE LOAD
-if (window.DeviceMotionEvent){
-    addEventListener("devicemotion", event => {
-        if (event.rotationRate.alpha > 256 || event.rotationRate.beta > 256 || event.rotationRate.gamma > 256) {
-            toggleVideo();
-        }
-    }, {"once": true});
-}
-
+// Check if the device supports DeviceMotionEvent
+if (window.DeviceMotionEvent) {
+    // Register a handler for the device motion event
+    document.body.addEventListener('devicemotion', () => {
+        handleMotion();
+      }, { once: true });
+  } else {
+    console.log("DeviceMotionEvent is not supported");
+  }
+  
+  // Threshold for considering a shake
+  const shakeThreshold = 256;
+  
+  // Function to handle device motion
+  function handleMotion(event) {
+    // Get acceleration including gravity
+    let acceleration = event.accelerationIncludingGravity;
+  
+    // Calculate total acceleration magnitude
+    let totalAcceleration = Math.sqrt(
+      Math.pow(acceleration.x, 2) +
+      Math.pow(acceleration.y, 2) +
+      Math.pow(acceleration.z, 2)
+    );
+  
+    // Check if the total acceleration exceeds the threshold
+    if (totalAcceleration > shakeThreshold) {
+      // Device is shaken
+      console.log("Device shaken!");
+      
+      // Perform your action here when the device is shaken
+      // For example, trigger an event or call a function
+    }
+  }
 //NORMAL PEOPLE STUFF
