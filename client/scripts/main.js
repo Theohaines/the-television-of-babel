@@ -40,7 +40,8 @@ const splashTexts = [
     "Slop content is bannable!",
     "Now mobile friendly",
     "Can I shake on PC?",
-    "Vacate life"
+    "Vacate life",
+    "Captcha is offline!"
 ];
 
 const videoUUIDInput = document.getElementById("VideoUUIDInput");
