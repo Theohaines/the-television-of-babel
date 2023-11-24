@@ -155,38 +155,40 @@ setInterval(() => {
     splashText.style.transform = `rotate(${splashSize}deg)`;
 }, 10);
 
-//NEW MOBILE SHIT IM TESTING
-// Check if the device supports DeviceMotionEvent
+    //NEW MOBILE SHIT IM TESTING
+    // Check if the device supports DeviceMotionEvent
 if (window.DeviceMotionEvent) {
     // Register a handler for the device motion event
-    document.body.addEventListener('devicemotion', handleMotion, once);
-  } else {
+    document.body.addEventListener('devicemotion', () => {
+        handleMotion();
+        }, { once: true });
+    } else {
     console.log("DeviceMotionEvent is not supported");
-  }
-  
-  // Threshold for considering a shake
-  const shakeThreshold = 256;
-  
-  // Function to handle device motion
-  function handleMotion(event) {
+    }
+
+    // Threshold for considering a shake
+    const shakeThreshold = 256;
+
+    // Function to handle device motion
+    function handleMotion(event) {
     // Get acceleration including gravity
     let acceleration = event.accelerationIncludingGravity;
-  
+
     // Calculate total acceleration magnitude
     let totalAcceleration = Math.sqrt(
-      Math.pow(acceleration.x, 2) +
-      Math.pow(acceleration.y, 2) +
-      Math.pow(acceleration.z, 2)
+        Math.pow(acceleration.x, 2) +
+        Math.pow(acceleration.y, 2) +
+        Math.pow(acceleration.z, 2)
     );
-  
+
     // Check if the total acceleration exceeds the threshold
     if (totalAcceleration > shakeThreshold) {
-      // Device is shaken
-      console.log("Device shaken!");
-      toggleVideo();
-      
-      // Perform your action here when the device is shaken
-      // For example, trigger an event or call a function
+        
+    toggleVideo();
+        console.log("Device shaken!");
+        
+        // Perform your action here when the device is shaken
+        // For example, trigger an event or call a function
     }
-  }
+}
 //NORMAL PEOPLE STUFF
