@@ -37,7 +37,10 @@ const splashTexts = [
     "STOP POSTING FEET!",
     "New TOS!",
     "Slopping all over the place",
-    "Slop content is bannable!"
+    "Slop content is bannable!",
+    "Now mobile friendly",
+    "Can I shake on PC?",
+    "Vacate life"
 ];
 
 const videoUUIDInput = document.getElementById("VideoUUIDInput");
