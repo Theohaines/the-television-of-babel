@@ -152,7 +152,7 @@ setInterval(() => {
 }, 10);
     //NEW MOBILE SHIT IM TESTING
     var myShakeEvent = new Shake({
-        threshold: 1, // optional shake strength threshold
+        threshold: 256, // optional shake strength threshold
         timeout: 2100 // optional, determines the frequency of event generation
     });
 
