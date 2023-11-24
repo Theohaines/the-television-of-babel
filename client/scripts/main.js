@@ -151,45 +151,35 @@ setInterval(() => {
     splashText.style.transform = `rotate(${splashSize}deg)`;
 }, 10);
     //NEW MOBILE SHIT IM TESTING
-
-    let lastShakeTime = 0; // Variable to track the last shake time
     const shakeThreshold = 15;
-    const cooldownDuration = 1000; // 1 second cooldown duration in milliseconds
 
     // Check if the device supports DeviceMotionEvent
     if (window.DeviceMotionEvent) {
-        // Register a handler for the device motion event
-        window.addEventListener('devicemotion', handleMotion);
+        window.addEventListener("devicemotion", function() {
+
+            // Get acceleration including gravity
+        let acceleration = event.accelerationIncludingGravity;
+
+        // Calculate total acceleration magnitude
+        let totalAcceleration = Math.sqrt(
+            Math.pow(acceleration.x, 2) +
+            Math.pow(acceleration.y, 2) +
+            Math.pow(acceleration.z, 2)
+        );
+
+        // Check if the total acceleration exceeds the threshold
+        if (totalAcceleration > shakeThreshold) {
+            // Device is shaken
+            console.log("Device shaken!");
+            toggleVideo();
+            // Perform your action here when the device is shaken
+            // For example, trigger an event or call a function
+        } else {
+            window.addEventListener('devicemotion', handleMotion);
+        }
+
+        }, {once : true});
     } else {
         console.log("DeviceMotionEvent is not supported");
     }
-    
-    // Threshold for considering a shake
-  
-  // Function to handle device motion
-function handleMotion(event) {
-    window.removeEventListener('devicemotion');
-    // Get acceleration including gravity
-    let acceleration = event.accelerationIncludingGravity;
-
-    // Calculate total acceleration magnitude
-    let totalAcceleration = Math.sqrt(
-        Math.pow(acceleration.x, 2) +
-        Math.pow(acceleration.y, 2) +
-        Math.pow(acceleration.z, 2)
-    );
-
-    let currentTime = new Date().getTime();
-
-    // Check if the total acceleration exceeds the threshold
-    if (totalAcceleration > shakeThreshold && currentTime - lastShakeTime > cooldownDuration) {
-        // Device is shaken
-        console.log("Device shaken!");
-        toggleVideo();
-        // Perform your action here when the device is shaken
-        // For example, trigger an event or call a function
-    } else {
-        window.addEventListener('devicemotion', handleMotion);
-    }
-}
 //NORMAL PEOPLE STUFF
