@@ -155,7 +155,11 @@ setInterval(() => {
     // Check if the device supports DeviceMotionEvent
 if (window.DeviceMotionEvent) {
     // Register a handler for the device motion event
-    window.addEventListener('devicemotion', handleMotion);
+    window.addEventListener("devicemotion", function() {
+
+        handleMotion()
+    
+    }, {once : true});
 } else {
     console.log("DeviceMotionEvent is not supported");
 }
