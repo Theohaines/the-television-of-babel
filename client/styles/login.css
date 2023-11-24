@@ -19,7 +19,6 @@
     width: 90%;
     height: 30px;
     background-color: #2e3131;
-    margin: auto;
     margin-bottom: 10px;
     display: block;
 }
@@ -28,4 +27,5 @@
     height: 30px;
     background-color: #2e3131;
     margin-bottom: 10px;
+    display: block;
 }
