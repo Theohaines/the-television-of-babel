@@ -192,7 +192,7 @@ if (window.DeviceMotionEvent) {
             toggleVideo();
         }
        
-    }, {once : true});    
+    });   
     // Function to handle device motion
 } else {
         console.log("DeviceMotionEvent is not supported");
