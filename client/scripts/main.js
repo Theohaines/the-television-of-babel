@@ -55,32 +55,28 @@ async function fetchVideo() {
 }
 
 async function toggleVideo() {
-    if (inStatic == false){
-        let videoUrl = await fetchVideo();
-        if (!videoUrl) return;
-    
-        inStatic = true;
-        video.style.display = "none";
-        video.src = ""
-        staticImage.style.display = "block";
-        staticAudio.play();
-    
-        setTimeout(() => {
-            inStatic = false;
-            video.style.display = "block";
-            staticImage.style.display = "none";
-            staticAudio.pause();
-            staticAudio.currentTime = 0;
-            video.src = videoUrl;
-            grabVideoUUID(videoUrl);
-    
-            clearInterval(toggler);
+    let videoUrl = await fetchVideo();
+    if (!videoUrl) return;
 
-            queueShakeEvent();
-        }, 2000);
-    } else {
-        console.log("Cannot change video, reason: IN STATIC")
-    }
+    inStatic = true;
+    video.style.display = "none";
+    video.src = ""
+    staticImage.style.display = "block";
+    staticAudio.play();
+
+    setTimeout(() => {
+        inStatic = false;
+        video.style.display = "block";
+        staticImage.style.display = "none";
+        staticAudio.pause();
+        staticAudio.currentTime = 0;
+        video.src = videoUrl;
+        grabVideoUUID(videoUrl);
+
+        clearInterval(toggler);
+
+        queueShakeEvent();
+    }, 2000);
 }
 
 function splashTextUpdater(){
