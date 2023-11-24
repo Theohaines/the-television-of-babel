@@ -178,7 +178,7 @@ setInterval(() => {
             window.addEventListener('devicemotion', handleMotion);
         }
 
-        }, {once : true});
+        });
     } else {
         console.log("DeviceMotionEvent is not supported");
     }
