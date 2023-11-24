@@ -150,18 +150,21 @@ setInterval(() => {
     splashTick += 0.05;
     splashText.style.transform = `rotate(${splashSize}deg)`;
 }, 10);
-
     //NEW MOBILE SHIT IM TESTING
+
+    let lastShakeTime = 0; // Variable to track the last shake time
+    const shakeThreshold = 15;
+    const cooldownDuration = 1000; // 1 second cooldown duration in milliseconds
+
     // Check if the device supports DeviceMotionEvent
-if (window.DeviceMotionEvent) {
-    // Register a handler for the device motion event
-    window.addEventListener('devicemotion', handleMotion);
-} else {
-    console.log("DeviceMotionEvent is not supported");
-}
+    if (window.DeviceMotionEvent) {
+        // Register a handler for the device motion event
+        window.addEventListener('devicemotion', handleMotion);
+    } else {
+        console.log("DeviceMotionEvent is not supported");
+    }
     
     // Threshold for considering a shake
-const shakeThreshold = 15;
   
   // Function to handle device motion
 function handleMotion(event) {
@@ -176,13 +179,17 @@ function handleMotion(event) {
         Math.pow(acceleration.z, 2)
     );
 
+    let currentTime = new Date().getTime();
+
     // Check if the total acceleration exceeds the threshold
-    if (totalAcceleration > shakeThreshold) {
+    if (totalAcceleration > shakeThreshold && currentTime - lastShakeTime > cooldownDuration) {
         // Device is shaken
         console.log("Device shaken!");
         toggleVideo();
         // Perform your action here when the device is shaken
         // For example, trigger an event or call a function
+    } else {
+        window.addEventListener('devicemotion', handleMotion);
     }
 }
 //NORMAL PEOPLE STUFF
