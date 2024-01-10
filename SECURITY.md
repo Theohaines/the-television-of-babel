@@ -24,8 +24,8 @@ Simply message the developers with any issues you face.
 
 
 For any front-end issues please contact:
-[Wintrcat](https://github.com/WintrCat)
+[Theo Haines](https://github.com/Theohaines)
 
 
 For any back-end issues please contact:
-[Theo Haines](https://github.com/Theohaines)
+[Wintrcat](https://github.com/WintrCat)
